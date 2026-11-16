@@ -1,0 +1,71 @@
+model,prompt_id,category,has_think,think_unclosed,final_empty,assistant_chars,final_chars,think_chars,rc,load_ms,prompt_tokens,prompt_ms,ttft_ms,gen_tokens,gen_tps,est_gen_s,est_total_s,hit_n_predict_limit
+Qwen3-1.7B-Q4_K_M,P01,reasoning,True,True,True,2809,0,2799,0,5305.50,85,4257.17,7852.4,1023,0.28,3653.6,3661.4,True
+Qwen3-1.7B-Q4_K_M,P02,reasoning,True,False,False,3847,31,3794,0,5314.22,55,3825.48,7394.3,1008,0.28,3600.0,3607.4,False
+Qwen3-1.7B-Q4_K_M,P03,reasoning,True,False,False,1791,180,1589,0,5493.28,37,3772.24,7285.1,535,0.28,1910.7,1918.0,False
+Qwen3-1.7B-Q4_K_M,P04,code,True,True,True,4284,0,4274,0,5148.75,67,3998.67,7562.9,1023,0.28,3653.6,3661.1,True
+Qwen3-1.7B-Q4_K_M,P05,code,True,True,True,3883,0,3873,0,5453.31,70,4516.51,8081.2,1023,0.28,3653.6,3661.7,True
+Qwen3-1.7B-Q4_K_M,P06,summarisation,True,False,False,1495,433,1040,0,5387.56,127,5189.05,8691.3,293,0.29,1010.3,1019.0,False
+Qwen3-1.7B-Q4_K_M,P07,summarisation,True,False,False,1446,531,893,0,5303.91,127,5021.99,8654.9,278,0.28,992.9,1001.5,False
+Qwen3-1.7B-Q4_K_M,P08,factual (hallucination check),True,True,True,4072,0,4062,0,5293.39,54,3847.17,7410.3,1023,0.28,3653.6,3661.0,True
+Qwen3-1.7B-Q4_K_M,P09,factual,True,False,False,1148,181,945,0,5317.84,47,3497.27,7057.8,269,0.28,960.7,967.8,False
+Qwen3-1.7B-Q4_K_M,P10,instruction following / format,True,False,False,1827,409,1396,0,6383.31,53,4094.77,7541.9,398,0.29,1372.4,1380.0,False
+Qwen3-1.7B-Q8_0,P01,reasoning,True,True,True,2771,0,2761,0,2137.34,85,289.23,332.7,1023,23.00,44.5,44.8,True
+Qwen3-1.7B-Q8_0,P02,reasoning,True,True,True,3799,0,3788,0,3577.16,55,561.42,605.0,1023,22.96,44.6,45.2,True
+Qwen3-1.7B-Q8_0,P03,reasoning,True,False,False,1844,184,1638,0,2718.72,37,194.80,231.1,519,27.58,18.8,19.0,False
+Qwen3-1.7B-Q8_0,P04,code,True,True,True,4280,0,4270,0,2079.00,67,350.70,393.7,1023,23.25,44.0,44.4,True
+Qwen3-1.7B-Q8_0,P05,code,True,True,True,4230,0,4220,0,2498.39,70,510.91,558.6,1023,20.99,48.7,49.3,True
+Qwen3-1.7B-Q8_0,P06,summarisation,True,False,False,2778,405,2351,0,2523.52,127,871.96,917.5,551,21.94,25.1,26.0,False
+Qwen3-1.7B-Q8_0,P07,summarisation,True,False,False,1323,324,977,0,2507.09,127,893.23,935.5,251,23.64,10.6,11.6,False
+Qwen3-1.7B-Q8_0,P08,factual (hallucination check),True,True,True,4111,0,4101,0,2089.19,54,263.60,308.3,1023,22.39,45.7,46.0,True
+Qwen3-1.7B-Q8_0,P09,factual,True,False,False,966,181,763,0,2501.00,47,513.94,556.4,232,23.55,9.9,10.4,False
+Qwen3-1.7B-Q8_0,P10,instruction following / format,True,False,False,1232,419,791,0,2532.00,53,527.62,567.4,255,25.13,10.1,10.7,False
+Qwen3-4B-Instruct-2507-Q4_0,P01,reasoning,False,False,False,803,800,0,0,7781.36,85,6298.19,10777.5,299,0.22,1359.1,1369.9,False
+Qwen3-4B-Instruct-2507-Q4_0,P02,reasoning,False,False,False,567,564,0,0,8007.27,55,5641.50,10162.5,155,0.22,704.5,714.7,False
+Qwen3-4B-Instruct-2507-Q4_0,P03,reasoning,False,False,False,211,208,0,0,7760.85,37,4985.39,9254.1,54,0.23,234.8,244.0,False
+Qwen3-4B-Instruct-2507-Q4_0,P04,code,False,False,False,2576,2573,0,0,7253.33,67,5665.31,10198.1,666,0.22,3027.3,3037.5,False
+Qwen3-4B-Instruct-2507-Q4_0,P05,code,False,False,False,1638,1635,0,0,8238.16,70,5567.84,10127.7,520,0.22,2363.6,2373.8,False
+Qwen3-4B-Instruct-2507-Q4_0,P06,summarisation,False,False,False,465,462,0,0,7809.28,127,6290.62,10624.7,91,0.23,395.7,406.3,False
+Qwen3-4B-Instruct-2507-Q4_0,P07,summarisation,False,False,False,388,385,0,0,7253.30,127,8788.84,13474.0,72,0.21,342.9,356.3,False
+Qwen3-4B-Instruct-2507-Q4_0,P08,factual (hallucination check),False,False,False,640,637,0,0,7992.12,54,5642.95,10247.4,143,0.22,650.0,660.2,False
+Qwen3-4B-Instruct-2507-Q4_0,P09,factual,False,False,False,216,213,0,0,6950.71,47,5563.62,9942.4,46,0.23,200.0,209.9,False
+Qwen3-4B-Instruct-2507-Q4_0,P10,instruction following / format,False,False,False,706,703,0,0,6951.04,53,5778.98,10288.9,141,0.22,640.9,651.2,False
+Qwen3-4B-Instruct-2507-Q4_K_M,P01,reasoning,False,False,False,621,618,0,0,8115.80,85,6510.03,10865.9,238,0.23,1034.8,1045.6,False
+Qwen3-4B-Instruct-2507-Q4_K_M,P02,reasoning,False,False,False,546,543,0,0,8388.15,55,5419.48,9757.1,147,0.23,639.1,648.9,False
+Qwen3-4B-Instruct-2507-Q4_K_M,P03,reasoning,False,False,False,167,164,0,0,7896.73,37,5110.66,9557.5,41,0.22,186.4,195.9,False
+Qwen3-4B-Instruct-2507-Q4_K_M,P04,code,False,False,False,1701,1698,0,0,7847.25,67,5943.36,10345.3,457,0.23,1987.0,1997.3,False
+Qwen3-4B-Instruct-2507-Q4_K_M,P05,code,False,False,False,2641,2637,0,0,8741.83,70,6716.86,11041.4,1023,0.23,4447.8,4458.9,True
+Qwen3-4B-Instruct-2507-Q4_K_M,P06,summarisation,False,False,False,458,455,0,0,7834.78,127,8713.76,12905.9,91,0.24,379.2,392.1,False
+Qwen3-4B-Instruct-2507-Q4_K_M,P07,summarisation,False,False,False,314,311,0,0,8126.37,127,9399.17,13677.2,54,0.23,234.8,248.5,False
+Qwen3-4B-Instruct-2507-Q4_K_M,P08,factual (hallucination check),False,False,False,370,367,0,0,8684.98,54,6463.26,10816.2,71,0.23,308.7,319.5,False
+Qwen3-4B-Instruct-2507-Q4_K_M,P09,factual,False,False,False,216,213,0,0,7232.90,47,6136.91,10517.0,46,0.23,200.0,210.5,False
+Qwen3-4B-Instruct-2507-Q4_K_M,P10,instruction following / format,False,False,False,639,636,0,0,8029.64,53,5652.37,10013.2,129,0.23,560.9,570.9,False
+Qwen3-4B-Instruct-2507-Q8_0,P01,reasoning,False,False,False,814,811,0,0,11794.14,85,5889.30,10240.2,340,0.23,1478.3,1488.5,False
+Qwen3-4B-Instruct-2507-Q8_0,P02,reasoning,False,False,False,577,574,0,0,12042.21,55,5029.53,7522.6,159,0.40,397.5,405.0,False
+Qwen3-4B-Instruct-2507-Q8_0,P03,reasoning,False,False,False,154,151,0,0,14831.86,37,6621.49,11085.4,45,0.22,204.5,215.6,False
+Qwen3-4B-Instruct-2507-Q8_0,P04,code,False,False,False,1557,1554,0,0,11376.39,67,5634.20,9883.6,382,0.24,1591.7,1601.6,False
+Qwen3-4B-Instruct-2507-Q8_0,P05,code,False,False,False,1443,1440,0,0,11754.98,70,6659.81,10987.1,402,0.23,1747.8,1758.8,False
+Qwen3-4B-Instruct-2507-Q8_0,P06,summarisation,False,False,False,456,453,0,0,13723.31,127,8974.26,13471.7,90,0.22,409.1,422.6,False
+Qwen3-4B-Instruct-2507-Q8_0,P07,summarisation,False,False,False,331,328,0,0,13912.90,127,7736.49,11934.6,60,0.24,250.0,261.9,False
+Qwen3-4B-Instruct-2507-Q8_0,P08,factual (hallucination check),False,False,False,340,337,0,0,11646.18,54,6383.16,10722.5,77,0.23,334.8,345.5,False
+Qwen3-4B-Instruct-2507-Q8_0,P09,factual,False,False,False,216,213,0,0,12990.43,47,6312.51,10508.6,46,0.24,191.7,202.2,False
+Qwen3-4B-Instruct-2507-Q8_0,P10,instruction following / format,False,False,False,634,631,0,0,11076.68,53,5205.93,9654.3,128,0.22,581.8,591.5,False
+Qwen3-8B-Q4_K_M,P01,reasoning,True,True,True,3009,0,2999,0,7697.40,85,3053.30,3207.2,1023,6.50,157.4,160.6,True
+Qwen3-8B-Q4_K_M,P02,reasoning,True,False,False,3821,413,3387,0,9512.25,55,1338.75,1495.0,1023,6.40,159.8,161.3,True
+Qwen3-8B-Q4_K_M,P03,reasoning,True,False,False,2198,173,2003,0,11850.57,37,1814.49,1961.3,622,6.81,91.3,93.3,False
+Qwen3-8B-Q4_K_M,P04,code,True,True,True,4120,0,4110,0,18462.98,67,13375.61,16352.4,1023,0.34,3008.8,3025.2,True
+Qwen3-8B-Q4_K_M,P05,code,True,True,True,3873,0,3863,0,10052.45,70,1542.77,1690.3,1023,6.78,150.9,152.6,True
+Qwen3-8B-Q4_K_M,P06,summarisation,True,False,False,1548,404,1122,0,7600.30,127,2570.73,2710.6,306,7.15,42.8,45.5,False
+Qwen3-8B-Q4_K_M,P07,summarisation,True,False,False,1528,352,1154,0,11570.17,127,3587.73,3731.4,291,6.96,41.8,45.5,False
+Qwen3-8B-Q4_K_M,P08,factual (hallucination check),True,False,False,2057,333,1702,0,12440.78,54,1692.99,1839.8,472,6.81,69.3,71.1,False
+Qwen3-8B-Q4_K_M,P09,factual,True,False,False,1315,232,1061,0,14738.14,47,2388.05,2531.6,311,6.97,44.6,47.2,False
+Qwen3-8B-Q4_K_M,P10,instruction following / format,True,False,False,2202,612,1568,0,13615.58,53,2564.96,2709.9,447,6.90,64.8,67.5,False
+Qwen3.5-4B-Q4_K_M,P01,reasoning,True,True,True,2648,0,2638,0,10357.13,87,9691.96,15667.2,1023,0.17,6017.6,6033.3,True
+Qwen3.5-4B-Q4_K_M,P02,reasoning,True,False,True,3437,0,3418,0,10400.43,57,7308.04,13313.7,1023,0.17,6017.6,6031.0,True
+Qwen3.5-4B-Q4_K_M,P03,reasoning,True,False,False,2597,105,2470,0,13302.92,39,9706.00,15662.3,780,0.17,4588.2,4603.9,False
+Qwen3.5-4B-Q4_K_M,P04,code,True,False,False,3262,1125,2115,0,15449.89,69,9240.22,12326.3,1021,0.32,3190.6,3203.0,False
+Qwen3.5-4B-Q4_K_M,P05,code,True,True,True,3266,0,3256,0,6005.60,72,1512.65,1611.4,1023,10.12,101.1,102.7,True
+Qwen3.5-4B-Q4_K_M,P06,summarisation,True,True,True,4205,0,4195,0,5084.61,130,3269.14,3372.8,1023,9.65,106.0,109.4,True
+Qwen3.5-4B-Q4_K_M,P07,summarisation,True,True,True,4589,0,4579,0,4205.30,129,3689.21,3789.4,1023,9.98,102.5,106.3,True
+Qwen3.5-4B-Q4_K_M,P08,factual (hallucination check),True,True,True,3886,0,3876,0,4118.12,56,1605.49,1709.2,1023,9.64,106.1,107.8,True
+Qwen3.5-4B-Q4_K_M,P09,factual,True,True,True,3783,0,3771,0,4139.87,49,1421.34,3956.6,1023,0.39,2623.1,2627.0,True
+Qwen3.5-4B-Q4_K_M,P10,instruction following / format,True,True,True,4187,0,4176,0,9627.51,55,8334.26,10584.2,1023,0.44,2325.0,2335.6,True

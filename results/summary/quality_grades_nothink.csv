@@ -1,0 +1,41 @@
+prompt_id,model,score_1_5,format_ok,language_ok,justification
+P01,Qwen3-1.7B-Q4_K_M,2,yes,yes,"Required Answer line is present, but the arithmetic is wrong (07:50; arrived at York as 07:15)."
+P01,Qwen3-1.7B-Q8_0,5,yes,yes,Correct step-by-step arithmetic and 'Answer: 07:40'.
+P01,Qwen3.5-4B-Q4_K_M,5,yes,yes,Correct (07:40) by adding the legs and by summing the total duration.
+P01,Qwen3-8B-Q4_K_M,5,yes,yes,Correct step-by-step arithmetic and 'Answer: 07:40'.
+P02,Qwen3-1.7B-Q4_K_M,5,yes,yes,Correct rate argument and 'Answer: 5 minutes'.
+P02,Qwen3-1.7B-Q8_0,4,yes,yes,Correct reasoning; Answer line is '5' without the unit.
+P02,Qwen3.5-4B-Q4_K_M,5,yes,yes,Correct rate argument and 'Answer: 5 minutes'.
+P02,Qwen3-8B-Q4_K_M,5,yes,yes,Correct rate argument and 'Answer: 5 minutes'.
+P03,Qwen3-1.7B-Q4_K_M,2,yes,yes,"Misreads 'all but 9 die'; first says 3, then concludes 8. The correct count is 9."
+P03,Qwen3-1.7B-Q8_0,5,yes,yes,"Correct: 9 left, 8 die; short justification."
+P03,Qwen3.5-4B-Q4_K_M,5,yes,yes,Correct: 9 sheep left with a clear justification.
+P03,Qwen3-8B-Q4_K_M,5,yes,yes,Correct: 9 left because 'all but 9' did not die.
+P04,Qwen3-1.7B-Q4_K_M,5,yes,yes,"O(n), no sort (set + two max passes); hidden edge-case checks all pass; 4 assert tests included."
+P04,Qwen3-1.7B-Q8_0,5,yes,yes,Single-pass O(n) function; hidden checks all pass; assert tests cover empty/single/dups.
+P04,Qwen3.5-4B-Q4_K_M,2,yes,yes,"Right idea, but `num > second_largest` when second is None raises TypeError on common cases."
+P04,Qwen3-8B-Q4_K_M,5,yes,yes,Single-pass O(n) with distinctness handled; hidden checks all pass.
+P05,Qwen3-1.7B-Q4_K_M,3,yes,yes,"Usage and exit 1 are present, but sizes are raw bytes (`%s`); the notes wrongly claim they are human-readable."
+P05,Qwen3-1.7B-Q8_0,3,yes,yes,Usage and exit 1 are present; awk always divides by 1024^3 and does not emit units such as 1.2G.
+P05,Qwen3.5-4B-Q4_K_M,3,yes,yes,"Usage and exit 1 are present, but the script prints raw byte sizes (comment mentions -h, the command does not)."
+P05,Qwen3-8B-Q4_K_M,4,yes,yes,"Usage, exit 1, and find+du -h | sort -hr | head -5 are correct; awk '{print $2,$1}' breaks paths that contain spaces."
+P06,Qwen3-1.7B-Q4_K_M,4,yes,yes,Exactly 3 faithful bullets; omits the European-funds detail and the six-month review window.
+P06,Qwen3-1.7B-Q8_0,4,yes,yes,"Exactly 3 faithful bullets covering route, opposition and review; omits European funds."
+P06,Qwen3.5-4B-Q4_K_M,5,yes,yes,"Exactly 3 short bullets, faithful, includes funding, chargers, opposition and the six-month review."
+P06,Qwen3-8B-Q4_K_M,5,yes,yes,"Exactly 3 faithful bullets covering route, European funds/chargers, and opposition/review."
+P07,Qwen3-1.7B-Q4_K_M,3,no,yes,"Three sentences, not two; wrongly says quantization reduces speed (the source says it speeds generation up)."
+P07,Qwen3-1.7B-Q8_0,4,no,yes,"Content is correct (memory vs compute, quantization speeds up, KV/heat) but it is three sentences, not two."
+P07,Qwen3.5-4B-Q4_K_M,4,yes,yes,"Exactly two sentences covering memory, long context and heat, but never names quantization."
+P07,Qwen3-8B-Q4_K_M,5,yes,yes,"Exactly two sentences; memory vs compute, quantization/speed/accuracy, longer context and heat."
+P08,Qwen3-1.7B-Q4_K_M,2,yes,yes,"Calls the Douro the longest and places its source at Vila Nova de Gaia (the mouth, not the source)."
+P08,Qwen3-1.7B-Q8_0,2,yes,yes,Calls the Douro the longest and places both the source and the valley inside Portugal.
+P08,Qwen3.5-4B-Q4_K_M,2,yes,yes,Calls the Douro the longest; invented 'Serra da Estrelida' / Corgo-Lima confluence at Miranda do Douro.
+P08,Qwen3-8B-Q4_K_M,3,yes,yes,"Correctly names the Tagus rising in Spain, but places the Douro in the Spanish Pyrenees near Sopetrán."
+P09,Qwen3-1.7B-Q4_K_M,5,yes,yes,1905; Nobel 1921 for the photoelectric effect; within three sentences.
+P09,Qwen3-1.7B-Q8_0,5,yes,yes,1905; Nobel 1921 for the photoelectric effect; within three sentences.
+P09,Qwen3.5-4B-Q4_K_M,5,yes,yes,"1905; Nobel 1921 for the photoelectric effect, explicitly not for relativity."
+P09,Qwen3-8B-Q4_K_M,5,yes,yes,1905; Nobel 1921 for the photoelectric effect; within three sentences.
+P10,Qwen3-1.7B-Q4_K_M,5,yes,yes,Valid JSON only; 3 tip objects with title and description.
+P10,Qwen3-1.7B-Q8_0,5,yes,yes,Valid JSON only; 3 tip objects with title and description.
+P10,Qwen3.5-4B-Q4_K_M,5,yes,yes,Valid JSON only; 3 tip objects with title and description.
+P10,Qwen3-8B-Q4_K_M,5,yes,yes,Valid JSON only; 3 tip objects with title and description.

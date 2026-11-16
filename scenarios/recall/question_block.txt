@@ -1,0 +1,14 @@
+QUESTIONS. Using only the notes above, give the following values.
+Reply with exactly 10 lines in the form key=value, in this order, with no other text.
+If a value is not in the notes, write key=NOT_FOUND.
+
+release_manager = full name of the release manager for the 4.2 deploy freeze
+staging_db_port = port number the staging Postgres instance listens on
+pdf_licence_key = licence key of the PDF renderer vendor
+upload_limit_mb = maximum upload size for proof-of-delivery photos, in MB
+webhook_backoff_s = seconds the payment webhook retries wait between attempts
+android_codename = internal code name of the new Android driver app
+oncall_feb19 = full name of the person covering on-call on the night of 19 February
+checkout_flag = name of the feature flag that hides the new checkout flow
+build_rack = rack the build farm was moved to
+session_ttl_s = session cache TTL in seconds

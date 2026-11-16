@@ -1,0 +1,8 @@
+model,sum_thinking_on,mean_thinking_on,sum_thinking_off,mean_thinking_off,sum_primary,mean_primary,n_score_5_off,n_score_1_off,scores_thinking_on,scores_thinking_off
+Qwen3-1.7B-Q4_K_M,31,3.10,36,3.60,36,3.60,4,0,P01=2 P02=4 P03=5 P04=1 P05=1 P06=4 P07=3 P08=1 P09=5 P10=5,P01=2 P02=5 P03=2 P04=5 P05=3 P06=4 P07=3 P08=2 P09=5 P10=5
+Qwen3-1.7B-Q8_0,26,2.60,42,4.20,42,4.20,5,0,P01=1 P02=1 P03=5 P04=1 P05=1 P06=3 P07=3 P08=1 P09=5 P10=5,P01=5 P02=4 P03=5 P04=5 P05=3 P06=4 P07=4 P08=2 P09=5 P10=5
+Qwen3-4B-Instruct-2507-Q4_0,42,4.20,,,42,4.20,,,P01=5 P02=4 P03=5 P04=4 P05=3 P06=5 P07=4 P08=2 P09=5 P10=5,(no thinking channel; not re-run)
+Qwen3-4B-Instruct-2507-Q4_K_M,42,4.20,,,42,4.20,,,P01=5 P02=5 P03=5 P04=3 P05=3 P06=5 P07=4 P08=2 P09=5 P10=5,(no thinking channel; not re-run)
+Qwen3-4B-Instruct-2507-Q8_0,45,4.50,,,45,4.50,,,P01=5 P02=5 P03=5 P04=4 P05=5 P06=5 P07=4 P08=2 P09=5 P10=5,(no thinking channel; not re-run)
+Qwen3.5-4B-Q4_K_M,20,2.00,41,4.10,41,4.10,6,0,P01=1 P02=2 P03=5 P04=2 P05=1 P06=2 P07=2 P08=1 P09=2 P10=2,P01=5 P02=5 P03=5 P04=2 P05=3 P06=5 P07=4 P08=2 P09=5 P10=5
+Qwen3-8B-Q4_K_M,35,3.50,47,4.70,47,4.70,8,0,P01=2 P02=3 P03=5 P04=1 P05=1 P06=5 P07=5 P08=3 P09=5 P10=5,P01=5 P02=5 P03=5 P04=5 P05=4 P06=5 P07=5 P08=3 P09=5 P10=5

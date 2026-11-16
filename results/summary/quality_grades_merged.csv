@@ -1,0 +1,71 @@
+prompt_id,model,score_thinking_on,score_thinking_off,score_primary,format_ok_off,justification_off,justification_on
+P01,Qwen3-1.7B-Q4_K_M,2,2,2,yes,"Required Answer line is present, but the arithmetic is wrong (07:50; arrived at York as 07:15).",Reached 07:40 in the unclosed thought but never emitted the required Answer line (hit n=1024).
+P01,Qwen3-1.7B-Q8_0,1,5,5,yes,Correct step-by-step arithmetic and 'Answer: 07:40'.,"Arithmetic error in the thought (07:50) then restarted; unclosed, no final answer."
+P01,Qwen3-4B-Instruct-2507-Q4_0,5,,5,yes,,Correct reasoning and 'Answer: 07:40'.
+P01,Qwen3-4B-Instruct-2507-Q4_K_M,5,,5,yes,,Correct reasoning and 'Answer: 07:40'.
+P01,Qwen3-4B-Instruct-2507-Q8_0,5,,5,yes,,Correct step-by-step arithmetic and the required 'Answer: 07:40' line.
+P01,Qwen3.5-4B-Q4_K_M,1,5,5,yes,Correct (07:40) by adding the legs and by summing the total duration.,Unclosed thought still mixing 07:05 and 07:15; no final answer.
+P01,Qwen3-8B-Q4_K_M,2,5,5,yes,Correct step-by-step arithmetic and 'Answer: 07:40'.,"Reached 07:40 in the thought, then started re-adding the intervals and was cut off; no final answer."
+P02,Qwen3-1.7B-Q4_K_M,4,5,5,yes,Correct rate argument and 'Answer: 5 minutes'.,"Correct 'Answer: 5 minutes' but almost no explanation, though a brief one was requested."
+P02,Qwen3-1.7B-Q8_0,1,4,4,yes,Correct reasoning; Answer line is '5' without the unit.,Unclosed thought still confused; last steps head toward 100×5 machine-minutes with no finished answer.
+P02,Qwen3-4B-Instruct-2507-Q4_0,4,,4,yes,,Correct reasoning; Answer line is '5' without the unit.
+P02,Qwen3-4B-Instruct-2507-Q4_K_M,5,,5,yes,,Clear rate argument and 'Answer: 5 minutes'.
+P02,Qwen3-4B-Instruct-2507-Q8_0,5,,5,yes,,Clear rate argument and 'Answer: 5 minutes'.
+P02,Qwen3.5-4B-Q4_K_M,2,5,5,yes,Correct rate argument and 'Answer: 5 minutes'.,"Thought reaches the correct answer, but the final channel is empty (closed think, no text after)."
+P02,Qwen3-8B-Q4_K_M,3,5,5,yes,Correct rate argument and 'Answer: 5 minutes'.,Correct rate stated (1 widget / 5 min) but truncated mid-explanation with no Answer line.
+P03,Qwen3-1.7B-Q4_K_M,5,2,2,yes,"Misreads 'all but 9 die'; first says 3, then concludes 8. The correct count is 9.",Correct: 9 sheep left; short justification of 'all but 9'.
+P03,Qwen3-1.7B-Q8_0,5,5,5,yes,"Correct: 9 left, 8 die; short justification.",Correct: 9 sheep left with a short justification.
+P03,Qwen3-4B-Instruct-2507-Q4_0,5,,5,yes,,Correct and clear; notes that 17 is irrelevant to the count left.
+P03,Qwen3-4B-Instruct-2507-Q4_K_M,5,,5,yes,,Correct: 9 sheep left with a clear justification.
+P03,Qwen3-4B-Instruct-2507-Q8_0,5,,5,yes,,"Correct: 9 left, 8 die; one-sentence justification."
+P03,Qwen3.5-4B-Q4_K_M,5,5,5,yes,Correct: 9 sheep left with a clear justification.,Correct one-sentence answer and justification.
+P03,Qwen3-8B-Q4_K_M,5,5,5,yes,Correct: 9 left because 'all but 9' did not die.,Correct: 9 sheep left with a clear justification.
+P04,Qwen3-1.7B-Q4_K_M,1,5,5,yes,"O(n), no sort (set + two max passes); hidden edge-case checks all pass; 4 assert tests included.",Unclosed thought; no function and no tests were emitted.
+P04,Qwen3-1.7B-Q8_0,1,5,5,yes,Single-pass O(n) function; hidden checks all pass; assert tests cover empty/single/dups.,Unclosed thought; no function was emitted.
+P04,Qwen3-4B-Instruct-2507-Q4_0,4,,4,yes,,O(n) function passes hidden checks; same wrong expected value in one bundled test.
+P04,Qwen3-4B-Instruct-2507-Q4_K_M,3,,3,yes,,"O(n) sketch is present but distinctness is wrong (e.g. [5,5,4,4,3] returns 5, [5,5,5] returns 5 not None)."
+P04,Qwen3-4B-Instruct-2507-Q8_0,4,,4,yes,,"O(n) function passes hidden edge-case checks; bundled tests wrongly expect second_largest([5,5,4,4,3])==3."
+P04,Qwen3.5-4B-Q4_K_M,2,2,2,yes,"Right idea, but `num > second_largest` when second is None raises TypeError on common cases.","Right idea, but `num > second` when second is None raises TypeError on common cases such as [5,1]."
+P04,Qwen3-8B-Q4_K_M,1,5,5,yes,Single-pass O(n) with distinctness handled; hidden checks all pass.,Unclosed thought; no function and no tests were emitted.
+P05,Qwen3-1.7B-Q4_K_M,1,3,3,yes,"Usage and exit 1 are present, but sizes are raw bytes (`%s`); the notes wrongly claim they are human-readable.",Unclosed thought; no script was emitted.
+P05,Qwen3-1.7B-Q8_0,1,3,3,yes,Usage and exit 1 are present; awk always divides by 1024^3 and does not emit units such as 1.2G.,Unclosed thought; no script was emitted.
+P05,Qwen3-4B-Instruct-2507-Q4_0,3,,3,yes,,"Usage and exit 1 are correct, but awk prints size and path on separate lines and `head -5` then keeps five lines, not five files."
+P05,Qwen3-4B-Instruct-2507-Q4_K_M,3,,3,yes,,"Usage and exit 1 are present, but both drafts omit filenames, force a G unit, and the rewrite is cut off at n=1024."
+P05,Qwen3-4B-Instruct-2507-Q8_0,5,,5,yes,,"Complete script: missing-arg usage + exit 1, find+du -h, sort -hr, head -5, comments."
+P05,Qwen3.5-4B-Q4_K_M,1,3,3,yes,"Usage and exit 1 are present, but the script prints raw byte sizes (comment mentions -h, the command does not).",Unclosed thought; no script was emitted.
+P05,Qwen3-8B-Q4_K_M,1,4,4,yes,"Usage, exit 1, and find+du -h | sort -hr | head -5 are correct; awk '{print $2,$1}' breaks paths that contain spaces.",Unclosed thought; no script was emitted.
+P06,Qwen3-1.7B-Q4_K_M,4,4,4,yes,Exactly 3 faithful bullets; omits the European-funds detail and the six-month review window.,Exactly 3 faithful bullets; omits the European-funds detail.
+P06,Qwen3-1.7B-Q8_0,3,4,4,yes,"Exactly 3 faithful bullets covering route, opposition and review; omits European funds.","3 bullets, but 'funded by European funds' drops 'partly', and March / chargers are missing."
+P06,Qwen3-4B-Instruct-2507-Q4_0,5,,5,yes,,"Exactly 3 faithful bullets, no invented numbers."
+P06,Qwen3-4B-Instruct-2507-Q4_K_M,5,,5,yes,,"Exactly 3 faithful bullets, no invented numbers."
+P06,Qwen3-4B-Instruct-2507-Q8_0,5,,5,yes,,"Exactly 3 faithful bullets covering route, funding/chargers, and opposition/review."
+P06,Qwen3.5-4B-Q4_K_M,2,5,5,yes,"Exactly 3 short bullets, faithful, includes funding, chargers, opposition and the six-month review.",Unclosed thought contains a nearly complete 3-bullet draft; no final answer.
+P06,Qwen3-8B-Q4_K_M,5,5,5,yes,"Exactly 3 faithful bullets covering route, European funds/chargers, and opposition/review.","Exactly 3 short bullets, faithful, no invented numbers."
+P07,Qwen3-1.7B-Q4_K_M,3,3,3,no,"Three sentences, not two; wrongly says quantization reduces speed (the source says it speeds generation up).",Adds a third meta sentence; wrongly says quantization reduces speed (the source says it speeds generation up).
+P07,Qwen3-1.7B-Q8_0,3,4,4,no,"Content is correct (memory vs compute, quantization speeds up, KV/heat) but it is three sentences, not two.","Two sentences, but says quantization reduces speed (opposite of the source) and stresses raw processing limits."
+P07,Qwen3-4B-Instruct-2507-Q4_0,4,,4,yes,,Exactly two sentences; describes shrinking weights without naming quantization.
+P07,Qwen3-4B-Instruct-2507-Q4_K_M,4,,4,yes,,"Two sentences, names quantization; omits the accuracy cost and adds 'less power' (not in the source)."
+P07,Qwen3-4B-Instruct-2507-Q8_0,4,,4,yes,,"Exactly two non-technical sentences covering the trade-off and heat, but never names quantization."
+P07,Qwen3.5-4B-Q4_K_M,2,4,4,yes,"Exactly two sentences covering memory, long context and heat, but never names quantization.",Unclosed thought has a usable two-sentence draft; no final answer.
+P07,Qwen3-8B-Q4_K_M,5,5,5,yes,"Exactly two sentences; memory vs compute, quantization/speed/accuracy, longer context and heat.","Exactly two sentences; memory vs compute, quantization/speed/accuracy, KV/cache and heat."
+P08,Qwen3-1.7B-Q4_K_M,1,2,2,yes,"Calls the Douro the longest and places its source at Vila Nova de Gaia (the mouth, not the source).",Unclosed; thought names the Minho as longest and places both sources in northern Portugal.
+P08,Qwen3-1.7B-Q8_0,1,2,2,yes,Calls the Douro the longest and places both the source and the valley inside Portugal.,"Unclosed thought wavers between Douro and Minho and cites Vila Nova de Gaia (the mouth, not the source)."
+P08,Qwen3-4B-Instruct-2507-Q4_0,2,,2,yes,,"Confused: Guadalquivir/Córdoba, claims the Tagus does not flow through Portugal, Douro in Asturias/Ourense."
+P08,Qwen3-4B-Instruct-2507-Q4_K_M,2,,2,yes,,Calls the Douro the longest and places its source near the Pyrenees/Catalonia.
+P08,Qwen3-4B-Instruct-2507-Q8_0,2,,2,yes,,Names the Tagus but places both sources inside Portugal (Montemor-o-Novo / Serra da Estrela).
+P08,Qwen3.5-4B-Q4_K_M,1,2,2,yes,Calls the Douro the longest; invented 'Serra da Estrelida' / Corgo-Lima confluence at Miranda do Douro.,Unclosed thought places both rivers in the Serra da Estrela.
+P08,Qwen3-8B-Q4_K_M,3,3,3,yes,"Correctly names the Tagus rising in Spain, but places the Douro in the Spanish Pyrenees near Sopetrán.",Correctly names the Tagus rising in Spain (Iberian system) but puts the Douro in the Cantabrian range near Potes.
+P09,Qwen3-1.7B-Q4_K_M,5,5,5,yes,1905; Nobel 1921 for the photoelectric effect; within three sentences.,1905; Nobel 1921 for the photoelectric effect; within three sentences.
+P09,Qwen3-1.7B-Q8_0,5,5,5,yes,1905; Nobel 1921 for the photoelectric effect; within three sentences.,1905; Nobel 1921 for the photoelectric effect; within three sentences.
+P09,Qwen3-4B-Instruct-2507-Q4_0,5,,5,yes,,"1905; Nobel 1921 for the photoelectric effect, explicitly not for relativity."
+P09,Qwen3-4B-Instruct-2507-Q4_K_M,5,,5,yes,,"1905; Nobel 1921 for the photoelectric effect, explicitly not for relativity."
+P09,Qwen3-4B-Instruct-2507-Q8_0,5,,5,yes,,"1905; Nobel 1921 for the photoelectric effect, explicitly not for relativity."
+P09,Qwen3.5-4B-Q4_K_M,2,5,5,yes,"1905; Nobel 1921 for the photoelectric effect, explicitly not for relativity.","Thought states the correct facts, but there is no final answer (unclosed)."
+P09,Qwen3-8B-Q4_K_M,5,5,5,yes,1905; Nobel 1921 for the photoelectric effect; within three sentences.,1905; Nobel 1921 for the photoelectric effect.
+P10,Qwen3-1.7B-Q4_K_M,5,5,5,yes,Valid JSON only; 3 tip objects with title and description.,Valid JSON only (ignoring the llama-completion [end of text] trailer); 3 tip objects with title+description.
+P10,Qwen3-1.7B-Q8_0,5,5,5,yes,Valid JSON only; 3 tip objects with title and description.,Valid JSON only; exact keys; 3 tips.
+P10,Qwen3-4B-Instruct-2507-Q4_0,5,,5,yes,,Valid JSON only; exact keys; 3 tips.
+P10,Qwen3-4B-Instruct-2507-Q4_K_M,5,,5,yes,,Valid JSON only; exact keys; 3 tips.
+P10,Qwen3-4B-Instruct-2507-Q8_0,5,,5,yes,,Valid JSON only; exact keys; 3 tips.
+P10,Qwen3.5-4B-Q4_K_M,2,5,5,yes,Valid JSON only; 3 tip objects with title and description.,Unclosed thought contains a draft JSON object; no final answer.
+P10,Qwen3-8B-Q4_K_M,5,5,5,yes,Valid JSON only; 3 tip objects with title and description.,Valid JSON only; exact keys; 3 tips.

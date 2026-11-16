@@ -1,0 +1,71 @@
+prompt_id,code,model,score_1_5,format_ok,language_ok,justification
+P01,M1,Qwen3-1.7B-Q4_K_M,2,no,yes,Reached 07:40 in the unclosed thought but never emitted the required Answer line (hit n=1024).
+P01,M2,Qwen3-8B-Q4_K_M,2,no,yes,"Reached 07:40 in the thought, then started re-adding the intervals and was cut off; no final answer."
+P01,M3,Qwen3-4B-Instruct-2507-Q8_0,5,yes,yes,Correct step-by-step arithmetic and the required 'Answer: 07:40' line.
+P01,M4,Qwen3-4B-Instruct-2507-Q4_0,5,yes,yes,Correct reasoning and 'Answer: 07:40'.
+P01,M5,Qwen3-4B-Instruct-2507-Q4_K_M,5,yes,yes,Correct reasoning and 'Answer: 07:40'.
+P01,M6,Qwen3.5-4B-Q4_K_M,1,no,yes,Unclosed thought still mixing 07:05 and 07:15; no final answer.
+P01,M7,Qwen3-1.7B-Q8_0,1,no,yes,"Arithmetic error in the thought (07:50) then restarted; unclosed, no final answer."
+P02,M1,Qwen3-1.7B-Q4_K_M,4,yes,yes,"Correct 'Answer: 5 minutes' but almost no explanation, though a brief one was requested."
+P02,M2,Qwen3-8B-Q4_K_M,3,no,yes,Correct rate stated (1 widget / 5 min) but truncated mid-explanation with no Answer line.
+P02,M3,Qwen3-4B-Instruct-2507-Q8_0,5,yes,yes,Clear rate argument and 'Answer: 5 minutes'.
+P02,M4,Qwen3-4B-Instruct-2507-Q4_0,4,yes,yes,Correct reasoning; Answer line is '5' without the unit.
+P02,M5,Qwen3-4B-Instruct-2507-Q4_K_M,5,yes,yes,Clear rate argument and 'Answer: 5 minutes'.
+P02,M6,Qwen3.5-4B-Q4_K_M,2,no,yes,"Thought reaches the correct answer, but the final channel is empty (closed think, no text after)."
+P02,M7,Qwen3-1.7B-Q8_0,1,no,yes,Unclosed thought still confused; last steps head toward 100×5 machine-minutes with no finished answer.
+P03,M1,Qwen3-1.7B-Q4_K_M,5,yes,yes,Correct: 9 sheep left; short justification of 'all but 9'.
+P03,M2,Qwen3-8B-Q4_K_M,5,yes,yes,Correct: 9 sheep left with a clear justification.
+P03,M3,Qwen3-4B-Instruct-2507-Q8_0,5,yes,yes,"Correct: 9 left, 8 die; one-sentence justification."
+P03,M4,Qwen3-4B-Instruct-2507-Q4_0,5,yes,yes,Correct and clear; notes that 17 is irrelevant to the count left.
+P03,M5,Qwen3-4B-Instruct-2507-Q4_K_M,5,yes,yes,Correct: 9 sheep left with a clear justification.
+P03,M6,Qwen3.5-4B-Q4_K_M,5,yes,yes,Correct one-sentence answer and justification.
+P03,M7,Qwen3-1.7B-Q8_0,5,yes,yes,Correct: 9 sheep left with a short justification.
+P04,M1,Qwen3-1.7B-Q4_K_M,1,no,yes,Unclosed thought; no function and no tests were emitted.
+P04,M2,Qwen3-8B-Q4_K_M,1,no,yes,Unclosed thought; no function and no tests were emitted.
+P04,M3,Qwen3-4B-Instruct-2507-Q8_0,4,yes,yes,"O(n) function passes hidden edge-case checks; bundled tests wrongly expect second_largest([5,5,4,4,3])==3."
+P04,M4,Qwen3-4B-Instruct-2507-Q4_0,4,yes,yes,O(n) function passes hidden checks; same wrong expected value in one bundled test.
+P04,M5,Qwen3-4B-Instruct-2507-Q4_K_M,3,yes,yes,"O(n) sketch is present but distinctness is wrong (e.g. [5,5,4,4,3] returns 5, [5,5,5] returns 5 not None)."
+P04,M6,Qwen3.5-4B-Q4_K_M,2,yes,yes,"Right idea, but `num > second` when second is None raises TypeError on common cases such as [5,1]."
+P04,M7,Qwen3-1.7B-Q8_0,1,no,yes,Unclosed thought; no function was emitted.
+P05,M1,Qwen3-1.7B-Q4_K_M,1,no,yes,Unclosed thought; no script was emitted.
+P05,M2,Qwen3-8B-Q4_K_M,1,no,yes,Unclosed thought; no script was emitted.
+P05,M3,Qwen3-4B-Instruct-2507-Q8_0,5,yes,yes,"Complete script: missing-arg usage + exit 1, find+du -h, sort -hr, head -5, comments."
+P05,M4,Qwen3-4B-Instruct-2507-Q4_0,3,yes,yes,"Usage and exit 1 are correct, but awk prints size and path on separate lines and `head -5` then keeps five lines, not five files."
+P05,M5,Qwen3-4B-Instruct-2507-Q4_K_M,3,yes,yes,"Usage and exit 1 are present, but both drafts omit filenames, force a G unit, and the rewrite is cut off at n=1024."
+P05,M6,Qwen3.5-4B-Q4_K_M,1,no,yes,Unclosed thought; no script was emitted.
+P05,M7,Qwen3-1.7B-Q8_0,1,no,yes,Unclosed thought; no script was emitted.
+P06,M1,Qwen3-1.7B-Q4_K_M,4,yes,yes,Exactly 3 faithful bullets; omits the European-funds detail.
+P06,M2,Qwen3-8B-Q4_K_M,5,yes,yes,"Exactly 3 short bullets, faithful, no invented numbers."
+P06,M3,Qwen3-4B-Instruct-2507-Q8_0,5,yes,yes,"Exactly 3 faithful bullets covering route, funding/chargers, and opposition/review."
+P06,M4,Qwen3-4B-Instruct-2507-Q4_0,5,yes,yes,"Exactly 3 faithful bullets, no invented numbers."
+P06,M5,Qwen3-4B-Instruct-2507-Q4_K_M,5,yes,yes,"Exactly 3 faithful bullets, no invented numbers."
+P06,M6,Qwen3.5-4B-Q4_K_M,2,no,yes,Unclosed thought contains a nearly complete 3-bullet draft; no final answer.
+P06,M7,Qwen3-1.7B-Q8_0,3,yes,yes,"3 bullets, but 'funded by European funds' drops 'partly', and March / chargers are missing."
+P07,M1,Qwen3-1.7B-Q4_K_M,3,no,yes,Adds a third meta sentence; wrongly says quantization reduces speed (the source says it speeds generation up).
+P07,M2,Qwen3-8B-Q4_K_M,5,yes,yes,"Exactly two sentences; memory vs compute, quantization/speed/accuracy, KV/cache and heat."
+P07,M3,Qwen3-4B-Instruct-2507-Q8_0,4,yes,yes,"Exactly two non-technical sentences covering the trade-off and heat, but never names quantization."
+P07,M4,Qwen3-4B-Instruct-2507-Q4_0,4,yes,yes,Exactly two sentences; describes shrinking weights without naming quantization.
+P07,M5,Qwen3-4B-Instruct-2507-Q4_K_M,4,yes,yes,"Two sentences, names quantization; omits the accuracy cost and adds 'less power' (not in the source)."
+P07,M6,Qwen3.5-4B-Q4_K_M,2,no,yes,Unclosed thought has a usable two-sentence draft; no final answer.
+P07,M7,Qwen3-1.7B-Q8_0,3,yes,yes,"Two sentences, but says quantization reduces speed (opposite of the source) and stresses raw processing limits."
+P08,M1,Qwen3-1.7B-Q4_K_M,1,no,yes,Unclosed; thought names the Minho as longest and places both sources in northern Portugal.
+P08,M2,Qwen3-8B-Q4_K_M,3,yes,yes,Correctly names the Tagus rising in Spain (Iberian system) but puts the Douro in the Cantabrian range near Potes.
+P08,M3,Qwen3-4B-Instruct-2507-Q8_0,2,yes,yes,Names the Tagus but places both sources inside Portugal (Montemor-o-Novo / Serra da Estrela).
+P08,M4,Qwen3-4B-Instruct-2507-Q4_0,2,yes,yes,"Confused: Guadalquivir/Córdoba, claims the Tagus does not flow through Portugal, Douro in Asturias/Ourense."
+P08,M5,Qwen3-4B-Instruct-2507-Q4_K_M,2,yes,yes,Calls the Douro the longest and places its source near the Pyrenees/Catalonia.
+P08,M6,Qwen3.5-4B-Q4_K_M,1,no,yes,Unclosed thought places both rivers in the Serra da Estrela.
+P08,M7,Qwen3-1.7B-Q8_0,1,no,yes,"Unclosed thought wavers between Douro and Minho and cites Vila Nova de Gaia (the mouth, not the source)."
+P09,M1,Qwen3-1.7B-Q4_K_M,5,yes,yes,1905; Nobel 1921 for the photoelectric effect; within three sentences.
+P09,M2,Qwen3-8B-Q4_K_M,5,yes,yes,1905; Nobel 1921 for the photoelectric effect.
+P09,M3,Qwen3-4B-Instruct-2507-Q8_0,5,yes,yes,"1905; Nobel 1921 for the photoelectric effect, explicitly not for relativity."
+P09,M4,Qwen3-4B-Instruct-2507-Q4_0,5,yes,yes,"1905; Nobel 1921 for the photoelectric effect, explicitly not for relativity."
+P09,M5,Qwen3-4B-Instruct-2507-Q4_K_M,5,yes,yes,"1905; Nobel 1921 for the photoelectric effect, explicitly not for relativity."
+P09,M6,Qwen3.5-4B-Q4_K_M,2,no,yes,"Thought states the correct facts, but there is no final answer (unclosed)."
+P09,M7,Qwen3-1.7B-Q8_0,5,yes,yes,1905; Nobel 1921 for the photoelectric effect; within three sentences.
+P10,M1,Qwen3-1.7B-Q4_K_M,5,yes,yes,Valid JSON only (ignoring the llama-completion [end of text] trailer); 3 tip objects with title+description.
+P10,M2,Qwen3-8B-Q4_K_M,5,yes,yes,Valid JSON only; exact keys; 3 tips.
+P10,M3,Qwen3-4B-Instruct-2507-Q8_0,5,yes,yes,Valid JSON only; exact keys; 3 tips.
+P10,M4,Qwen3-4B-Instruct-2507-Q4_0,5,yes,yes,Valid JSON only; exact keys; 3 tips.
+P10,M5,Qwen3-4B-Instruct-2507-Q4_K_M,5,yes,yes,Valid JSON only; exact keys; 3 tips.
+P10,M6,Qwen3.5-4B-Q4_K_M,2,no,yes,Unclosed thought contains a draft JSON object; no final answer.
+P10,M7,Qwen3-1.7B-Q8_0,5,yes,yes,Valid JSON only; exact keys; 3 tips.

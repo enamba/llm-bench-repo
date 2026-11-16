@@ -1,0 +1,102 @@
+[
+ {
+  "key": "release_manager",
+  "sentence": "Decision: Marisol Okafor will be the release manager for the 4.2 deploy freeze.",
+  "question": "full name of the release manager for the 4.2 deploy freeze",
+  "expected": "Marisol Okafor",
+  "accept": [
+   "okafor"
+  ],
+  "position": 0.05
+ },
+ {
+  "key": "staging_db_port",
+  "sentence": "Config change: the staging Postgres instance now listens on port 6431.",
+  "question": "port number the staging Postgres instance listens on",
+  "expected": "6431",
+  "accept": [
+   "\\b6431\\b"
+  ],
+  "position": 0.15
+ },
+ {
+  "key": "pdf_licence_key",
+  "sentence": "The licence key for the PDF renderer vendor is KX-58-TQ-9021; keep it out of the repository.",
+  "question": "licence key of the PDF renderer vendor",
+  "expected": "KX-58-TQ-9021",
+  "accept": [
+   "kx-?58-?tq-?9021"
+  ],
+  "position": 0.25
+ },
+ {
+  "key": "upload_limit_mb",
+  "sentence": "The maximum upload size for proof-of-delivery photos was raised to 375 MB.",
+  "question": "maximum upload size for proof-of-delivery photos, in MB",
+  "expected": "375",
+  "accept": [
+   "\\b375\\b"
+  ],
+  "position": 0.35
+ },
+ {
+  "key": "webhook_backoff_s",
+  "sentence": "The payment webhook retries now wait 47 seconds between attempts.",
+  "question": "seconds the payment webhook retries wait between attempts",
+  "expected": "47",
+  "accept": [
+   "\\b47\\b"
+  ],
+  "position": 0.45
+ },
+ {
+  "key": "android_codename",
+  "sentence": "The new Android driver app has the internal code name Bluefin.",
+  "question": "internal code name of the new Android driver app",
+  "expected": "Bluefin",
+  "accept": [
+   "bluefin"
+  ],
+  "position": 0.55
+ },
+ {
+  "key": "oncall_feb19",
+  "sentence": "On-call change: Teodoro Lindqvist covers the night of 19 February instead of the usual rota.",
+  "question": "full name of the person covering on-call on the night of 19 February",
+  "expected": "Teodoro Lindqvist",
+  "accept": [
+   "lindqvist"
+  ],
+  "position": 0.65
+ },
+ {
+  "key": "checkout_flag",
+  "sentence": "The new checkout flow is hidden behind the feature flag checkout_v3_shadow until the audit is done.",
+  "question": "name of the feature flag that hides the new checkout flow",
+  "expected": "checkout_v3_shadow",
+  "accept": [
+   "checkout_?v3_?shadow"
+  ],
+  "position": 0.75
+ },
+ {
+  "key": "build_rack",
+  "sentence": "The build farm was moved to rack R-17 in the Porto data centre.",
+  "question": "rack the build farm was moved to",
+  "expected": "R-17",
+  "accept": [
+   "\\br-?17\\b"
+  ],
+  "position": 0.85
+ },
+ {
+  "key": "session_ttl_s",
+  "sentence": "The session cache TTL was set to 930 seconds after the login incident.",
+  "question": "session cache TTL in seconds",
+  "expected": "930",
+  "accept": [
+   "\\b930\\b"
+  ],
+  "position": 0.95
+ }
+]

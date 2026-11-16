@@ -1,0 +1,407 @@
+{
+ "version": 1,
+ "system": "You are a concise technical assistant for a developer working in Termux on Android (bash, git, Python, Node). Answer directly and briefly. Put commands and code in fenced code blocks. Prefer one-liners for shell questions. Do not repeat the question. Say so if you are not sure.",
+ "notes": "Fictional fixtures. 'reference' and 'wrong' answers are only used by `dev_bench.py selftest` to prove each grader accepts a correct answer and rejects a wrong one; they are never shown to the model.",
+ "fixtures": {
+  "files": {
+   "app.log": "2026-11-10 08:00:01 INFO service started\n2026-11-10 08:00:05 ERROR cannot open /data/cache\n2026-11-10 08:01:00 WARN slow response 1200 ms\n2026-11-10 08:02:10 ERROR timeout talking to db\n2026-11-10 08:02:11 error retry scheduled\n2026-11-10 08:03:00 INFO request ok\n2026-11-10 08:04:44 ERROR timeout talking to db\n2026-11-10 08:05:00 INFO request ok\n2026-11-10 08:06:30 ERROR disk almost full\n2026-11-10 08:07:00 Error: user typo\n2026-11-10 08:08:15 ERROR payment gateway 502\n2026-11-10 08:09:00 INFO request ok\n2026-11-10 08:10:10 ERROR payment gateway 502\n2026-11-10 08:11:12 ERROR shutting down worker 3\n2026-11-10 08:12:00 INFO done\n",
+   "data.csv": "name,city,score\nana,Lisbon,88\nbruno,Porto,72\ncarla,Faro,97\ndiogo,Braga,64\neva,Coimbra,91\nfilipe,Lisbon,85\ngita,Porto,9\n",
+   "config.ini": "[server]\nhost = localhost\nport = 8080\n\n[database]\nurl = postgres://localhost:5432/app?fallback=localhost\nreplica = localhost\n",
+   "setup.py": "from setuptools import setup\nsetup(name='demo', version='0.1')\n",
+   "notes.txt": "Buy a USB-C cable.\nCall the plumber on Friday.\n",
+   "README.txt": "Demo project used by the dev benchmark.\n",
+   "src/main.py": "print('hello')\n",
+   "src/util/helpers.py": "def add(a, b):\n    return a + b\n",
+   "src/util/data.json": "{\"k\": 1}\n",
+   "tests/test_main.py": "def test_ok():\n    assert True\n",
+   "docs/old.txt": "old docs\n"
+  },
+  "git": {
+   "commits": [
+    [
+     "README.md",
+     "# demo\n",
+     "initial commit"
+    ],
+    [
+     "parser.py",
+     "def parse(s):\n    return s.split(',')\n",
+     "add parser"
+    ],
+    [
+     "parser.py",
+     "def parse(s):\n    return s.split(',') if s else []\n",
+     "fix parser crash on empty input"
+    ],
+    [
+     "README.md",
+     "# demo\n\nUsage: python parser.py\n",
+     "update README"
+    ]
+   ]
+  }
+ },
+ "questions": [
+  {
+   "id": "S1",
+   "category": "shell",
+   "fixture": "files",
+   "question": "The current directory (bash, Termux on Android) contains: app.log, data.csv, config.ini, setup.py, notes.txt, README.txt and the folders src/, tests/ and docs/. Give a one-line command that prints how many lines of app.log contain the string ERROR (case-sensitive). It must print only the number. Reply with the command only, in a single ```bash code block.",
+   "expected": "grep -c ERROR app.log  -> 7",
+   "grader": {
+    "type": "shell",
+    "check": {
+     "stdout_equals": "7"
+    }
+   },
+   "reference": "```bash\ngrep -c ERROR app.log\n```",
+   "wrong": "```bash\ngrep -ci error app.log\n```"
+  },
+  {
+   "id": "S2",
+   "category": "shell",
+   "fixture": "files",
+   "question": "The current directory (bash, Termux on Android) contains: app.log, data.csv, config.ini, setup.py, notes.txt, README.txt and the folders src/, tests/ and docs/. Give a one-line command that lists every .py file under the current directory (recursively), one path per line, sorted alphabetically. Reply with the command only, in a single ```bash code block.",
+   "expected": "find . -name '*.py' | sort",
+   "grader": {
+    "type": "shell",
+    "check": {
+     "stdout_lines_set": [
+      "setup.py",
+      "src/main.py",
+      "src/util/helpers.py",
+      "tests/test_main.py"
+     ],
+     "sorted": true
+    }
+   },
+   "reference": "```bash\nfind . -name '*.py' -type f | sort\n```",
+   "wrong": "```bash\nls *.py\n```"
+  },
+  {
+   "id": "S3",
+   "category": "shell",
+   "fixture": "files",
+   "question": "The current directory (bash, Termux on Android) contains: app.log, data.csv, config.ini, setup.py, notes.txt, README.txt and the folders src/, tests/ and docs/. Rename every .txt file in the current directory (NOT in subfolders) to the same name with the .md extension, keeping the contents. One line. Reply with the command only, in a single ```bash code block.",
+   "expected": "for f in *.txt; do mv \"$f\" \"${f%.txt}.md\"; done",
+   "grader": {
+    "type": "shell",
+    "check": {
+     "files_exist": [
+      "notes.md",
+      "README.md",
+      "docs/old.txt"
+     ],
+     "files_absent": [
+      "notes.txt",
+      "README.txt",
+      "docs/old.md"
+     ],
+     "file_equals": {
+      "notes.md": "Buy a USB-C cable.\nCall the plumber on Friday.\n"
+     }
+    }
+   },
+   "reference": "```bash\nfor f in *.txt; do mv \"$f\" \"${f%.txt}.md\"; done\n```",
+   "wrong": "```bash\nfind . -name '*.txt' -exec sh -c 'mv \"$1\" \"${1%.txt}.md\"' _ {} \\;\n```"
+  },
+  {
+   "id": "S4",
+   "category": "shell",
+   "fixture": "files",
+   "question": "The current directory (bash, Termux on Android) contains: app.log, data.csv, config.ini, setup.py, notes.txt, README.txt and the folders src/, tests/ and docs/. data.csv has a header line and the columns name,city,score. Give a one-line command that prints the 3 highest scores (numbers only), one per line, highest first. Reply with the command only, in a single ```bash code block.",
+   "expected": "tail -n +2 data.csv | cut -d, -f3 | sort -nr | head -3  -> 97, 91, 88",
+   "grader": {
+    "type": "shell",
+    "check": {
+     "stdout_equals": "97\n91\n88"
+    }
+   },
+   "reference": "```bash\ntail -n +2 data.csv | cut -d, -f3 | sort -nr | head -3\n```",
+   "wrong": "```bash\ncut -d, -f3 data.csv | sort | tail -3\n```"
+  },
+  {
+   "id": "S5",
+   "category": "shell",
+   "fixture": "files",
+   "question": "The current directory (bash, Termux on Android) contains: app.log, data.csv, config.ini, setup.py, notes.txt, README.txt and the folders src/, tests/ and docs/. Replace every occurrence of localhost with 127.0.0.1 in config.ini, editing the file in place. Reply with the command only, in a single ```bash code block.",
+   "expected": "sed -i 's/localhost/127.0.0.1/g' config.ini",
+   "grader": {
+    "type": "shell",
+    "check": {
+     "file_equals": {
+      "config.ini": "[server]\nhost = 127.0.0.1\nport = 8080\n\n[database]\nurl = postgres://127.0.0.1:5432/app?fallback=127.0.0.1\nreplica = 127.0.0.1\n"
+     }
+    }
+   },
+   "reference": "```bash\nsed -i 's/localhost/127.0.0.1/g' config.ini\n```",
+   "wrong": "```bash\nsed -i 's/localhost/127.0.0.1/' config.ini\n```"
+  },
+  {
+   "id": "S6",
+   "category": "git",
+   "fixture": "git",
+   "question": "The current directory is a git repository with a few commits on the branch main and a clean working tree. Give a one-line command that prints ONLY the short hash of the commit whose message contains 'fix parser'. Reply with the command only, in a single ```bash code block.",
+   "expected": "git log --grep='fix parser' --format=%h",
+   "grader": {
+    "type": "shell",
+    "check": {
+     "stdout_git_hash_of": "fix parser"
+    }
+   },
+   "reference": "```bash\ngit log --grep='fix parser' --format=%h\n```",
+   "wrong": "```bash\ngit log --oneline -1\n```"
+  },
+  {
+   "id": "S7",
+   "category": "git",
+   "fixture": "git",
+   "question": "The current directory is a git repository with a few commits on the branch main and a clean working tree. Create a new branch called feature/login from the current commit and switch to it, in one command. Reply with the command only, in a single ```bash code block.",
+   "expected": "git switch -c feature/login  (or git checkout -b feature/login)",
+   "grader": {
+    "type": "shell",
+    "check": {
+     "git_branch": "feature/login"
+    }
+   },
+   "reference": "```bash\ngit switch -c feature/login\n```",
+   "wrong": "```bash\ngit branch feature/login\n```"
+  },
+  {
+   "id": "T1",
+   "category": "termux",
+   "question": "In Termux on Android: which command installs ripgrep (the rg binary), and which command gives Termux access to the phone's shared storage (e.g. ~/storage/downloads)? Answer with the two commands.",
+   "expected": "pkg install ripgrep ; termux-setup-storage",
+   "grader": {
+    "type": "keywords",
+    "keywords": [
+     "ripgrep",
+     "termux-setup-storage"
+    ],
+    "all": true
+   },
+   "reference": "```bash\npkg install ripgrep\ntermux-setup-storage\n```",
+   "wrong": "```bash\napt install rg\n```"
+  },
+  {
+   "id": "R1",
+   "category": "regex",
+   "question": "Write a Python regular expression that matches a whole string containing an ISO date YYYY-MM-DD, where the month is 01-12 and the day is 01-31 (no need to check days per month). Reply with the pattern only, as a raw string in a ```python code block.",
+   "expected": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$",
+   "grader": {
+    "type": "regex_fullmatch",
+    "match": [
+     "2026-11-10",
+     "1999-01-31",
+     "2000-12-01",
+     "2024-02-29"
+    ],
+    "no_match": [
+     "2026-13-01",
+     "2026-00-10",
+     "2026-1-5",
+     "2026-11-32",
+     "26-11-10",
+     "2026/11/10",
+     "2026-11-10x",
+     "2026-11-00"
+    ]
+   },
+   "reference": "```python\nr\"^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$\"\n```",
+   "wrong": "```python\nr\"\\d{4}-\\d{2}-\\d{2}\"\n```"
+  },
+  {
+   "id": "R2",
+   "category": "regex",
+   "question": "Write a Python regular expression, to be used with re.findall, that extracts the email addresses from a text. Use no capturing groups. Reply with the pattern only, as a raw string in a ```python code block.",
+   "expected": "[\\w.+-]+@[\\w-]+(?:\\.[\\w-]+)+",
+   "grader": {
+    "type": "regex_findall",
+    "text": "Contact ana.silva@example.com or support@fold-bench.dev; not this: user@ or @domain.com. Also j_doe+test@mail.co.uk.",
+    "expected": [
+     "ana.silva@example.com",
+     "support@fold-bench.dev",
+     "j_doe+test@mail.co.uk"
+    ]
+   },
+   "reference": "```python\nr\"[\\w.+-]+@[\\w-]+(?:\\.[\\w-]+)+\"\n```",
+   "wrong": "```python\nr\"\\w+@\\w+\\.\\w+\"\n```"
+  },
+  {
+   "id": "E1",
+   "category": "error",
+   "question": "I get this error. Explain the cause in one or two sentences and show the fixed line.\n\n```\nTraceback (most recent call last):\n  File \"report.py\", line 12, in <module>\n    total = total + row[\"amount\"]\nTypeError: unsupported operand type(s) for +: 'int' and 'str'\n```\n\nrow comes from csv.DictReader.",
+   "expected": "csv.DictReader returns strings; convert: total = total + float(row[\"amount\"]) (or int()/Decimal())",
+   "grader": {
+    "type": "keywords",
+    "keywords": [
+     "float(",
+     "int(",
+     "Decimal("
+    ]
+   },
+   "reference": "DictReader gives strings.\n```python\ntotal = total + float(row[\"amount\"])\n```",
+   "wrong": "Use str(total)."
+  },
+  {
+   "id": "E2",
+   "category": "error",
+   "question": "`git pull origin main` fails with: `fatal: refusing to merge unrelated histories`. What does it mean and how do I merge anyway? Give the command.",
+   "expected": "The two branches have no common ancestor; git pull origin main --allow-unrelated-histories",
+   "grader": {
+    "type": "keywords",
+    "keywords": [
+     "--allow-unrelated-histories"
+    ]
+   },
+   "reference": "```bash\ngit pull origin main --allow-unrelated-histories\n```",
+   "wrong": "```bash\ngit pull --force\n```"
+  },
+  {
+   "id": "B1",
+   "category": "bugfix-python",
+   "question": "This function is wrong for lists with an even number of elements, and it should raise ValueError for an empty list. Return the corrected function in a ```python code block.\n\n```python\ndef median(nums):\n    s = sorted(nums)\n    n = len(s)\n    mid = n // 2\n    if n % 2 == 0:\n        return (s[mid] + s[mid + 1]) / 2\n    return s[mid]\n```",
+   "expected": "(s[mid - 1] + s[mid]) / 2 and raise ValueError when empty",
+   "grader": {
+    "type": "python_tests",
+    "entry": "median",
+    "tests": "assert median([3, 1, 2]) == 2\nassert median([4, 1, 3, 2]) == 2.5\nassert median([5]) == 5\nassert median([1, 2]) == 1.5\ntry:\n    median([])\n    raise AssertionError('no ValueError for empty list')\nexcept ValueError:\n    pass\n"
+   },
+   "reference": "```python\ndef median(nums):\n    if not nums:\n        raise ValueError('empty')\n    s = sorted(nums)\n    n = len(s)\n    mid = n // 2\n    if n % 2 == 0:\n        return (s[mid - 1] + s[mid]) / 2\n    return s[mid]\n```",
+   "wrong": "```python\ndef median(nums):\n    s = sorted(nums)\n    return s[len(s) // 2]\n```"
+  },
+  {
+   "id": "B2",
+   "category": "bugfix-js",
+   "question": "This JavaScript function should split an array into chunks of `size` elements, but the last chunk is sometimes missing. Return the corrected function in a ```javascript code block.\n\n```javascript\nfunction chunk(arr, size) {\n  const out = [];\n  for (let i = 0; i < arr.length - size; i += size) {\n    out.push(arr.slice(i, i + size));\n  }\n  return out;\n}\n```",
+   "expected": "loop condition i < arr.length",
+   "grader": {
+    "type": "node_tests",
+    "entry": "chunk",
+    "tests": "__assert.deepStrictEqual(chunk([1,2,3,4,5], 2), [[1,2],[3,4],[5]]);\n__assert.deepStrictEqual(chunk([], 3), []);\n__assert.deepStrictEqual(chunk([1,2,3], 3), [[1,2,3]]);\n__assert.deepStrictEqual(chunk([1,2,3], 5), [[1,2,3]]);\n__assert.deepStrictEqual(chunk([1,2,3,4], 2), [[1,2],[3,4]]);\n"
+   },
+   "reference": "```javascript\nfunction chunk(arr, size) {\n  const out = [];\n  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));\n  return out;\n}\n```",
+   "wrong": "```javascript\nfunction chunk(arr, size) {\n  const out = [];\n  for (let i = 0; i <= arr.length - size; i += size) out.push(arr.slice(i, i + size));\n  return out;\n}\n```"
+  },
+  {
+   "id": "B3",
+   "category": "bugfix-sql",
+   "question": "Table: orders(id, customer, status, amount). This SQLite query should return, for each customer, the total amount of their orders with status 'paid', only for customers whose paid total is above 100, ordered by that total from highest to lowest. It returns wrong results. Return the corrected query in a ```sql code block.\n\n```sql\nSELECT customer, SUM(amount) AS total\nFROM orders\nGROUP BY customer\nHAVING total > 100 AND status = 'paid'\nORDER BY total;\n```",
+   "expected": "WHERE status = 'paid' before GROUP BY; HAVING SUM(amount) > 100; ORDER BY total DESC -> dave 140, alice 125, bob 120",
+   "grader": {
+    "type": "sql",
+    "setup": "CREATE TABLE orders (id INTEGER PRIMARY KEY, customer TEXT, status TEXT, amount REAL);\nINSERT INTO orders (customer, status, amount) VALUES\n('alice','paid',80),('alice','paid',45),('alice','cancelled',300),\n('bob','paid',120),('bob','refunded',50),\n('carol','cancelled',500),('carol','paid',30),\n('dave','paid',60),('dave','paid',70),('dave','paid',10),\n('erin','paid',99);",
+    "expected_rows": [
+     [
+      "dave",
+      140.0
+     ],
+     [
+      "alice",
+      125.0
+     ],
+     [
+      "bob",
+      120.0
+     ]
+    ],
+    "ordered": true
+   },
+   "reference": "```sql\nSELECT customer, SUM(amount) AS total FROM orders WHERE status = 'paid'\nGROUP BY customer HAVING SUM(amount) > 100 ORDER BY total DESC;\n```",
+   "wrong": "```sql\nSELECT customer, SUM(amount) AS total FROM orders GROUP BY customer HAVING total > 100 ORDER BY total DESC;\n```"
+  },
+  {
+   "id": "W1",
+   "category": "write-python",
+   "question": "Write a Python function parse_duration(text: str) -> int that converts strings like '1h30m15s', '45s', '2h' or '90m' into a number of seconds. Units h, m and s each appear at most once, in that order. It must raise ValueError for an empty or invalid string (e.g. '', 'abc', '10x'). Include 3 assert-based tests. Use a ```python code block.",
+   "expected": "regex ^(?:(\\d+)h)?(?:(\\d+)m)?(?:(\\d+)s)?$ with a non-empty check",
+   "grader": {
+    "type": "python_tests",
+    "entry": "parse_duration",
+    "tests": "assert parse_duration('1h30m15s') == 5415\nassert parse_duration('45s') == 45\nassert parse_duration('2h') == 7200\nassert parse_duration('90m') == 5400\nassert parse_duration('10m5s') == 605\nfor bad in ['', 'abc', '10x', 'h']:\n    try:\n        parse_duration(bad)\n        raise AssertionError('accepted ' + repr(bad))\n    except ValueError:\n        pass\n"
+   },
+   "reference": "```python\nimport re\ndef parse_duration(text: str) -> int:\n    m = re.fullmatch(r'(?:(\\d+)h)?(?:(\\d+)m)?(?:(\\d+)s)?', text or '')\n    if not text or not m:\n        raise ValueError(text)\n    h, mi, s = (int(g) if g else 0 for g in m.groups())\n    return h * 3600 + mi * 60 + s\n\nassert parse_duration('45s') == 45\n```",
+   "wrong": "```python\ndef parse_duration(text):\n    return int(text[:-1])\n```"
+  },
+  {
+   "id": "W2",
+   "category": "write-js",
+   "question": "Write a JavaScript function slugify(text) that lowercases the text, replaces every run of characters that are not letters a-z or digits with a single hyphen, and removes leading and trailing hyphens. Example: 'Hello, World!' -> 'hello-world'. Include 3 console.assert tests. Use a ```javascript code block.",
+   "expected": "text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')",
+   "grader": {
+    "type": "node_tests",
+    "entry": "slugify",
+    "tests": "__assert.strictEqual(slugify('Hello, World!'), 'hello-world');\n__assert.strictEqual(slugify('  Multiple   spaces  '), 'multiple-spaces');\n__assert.strictEqual(slugify('Node.js & Termux: 2026 guide'), 'node-js-termux-2026-guide');\n__assert.strictEqual(slugify('---already--slugged---'), 'already-slugged');\n__assert.strictEqual(slugify(''), '');\n"
+   },
+   "reference": "```javascript\nfunction slugify(text) {\n  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');\n}\nconsole.assert(slugify('A B') === 'a-b');\n```",
+   "wrong": "```javascript\nfunction slugify(text) { return text.toLowerCase().split(' ').join('-'); }\n```"
+  },
+  {
+   "id": "L1",
+   "category": "read-file",
+   "context_file": "inventory_service.py",
+   "question": "In SupplierClient, what is the default maximum number of retries, and how many seconds does it wait before the THIRD attempt? Answer exactly in the format: retries=<n>, delay_before_third_attempt=<seconds>",
+   "expected": "retries=4, delay_before_third_attempt=1 (0.5 * 2**1)",
+   "grader": {
+    "type": "keywords",
+    "keywords": [
+     "retries=4",
+     "delay_before_third_attempt=1"
+    ],
+    "all": true
+   },
+   "reference": "retries=4, delay_before_third_attempt=1.0",
+   "wrong": "retries=3, delay_before_third_attempt=2"
+  },
+  {
+   "id": "L2",
+   "category": "read-file",
+   "context_file": "inventory_service.py",
+   "question": "Which HTTP status code does handle_request return when a reservation would dip into the safety stock, and which exception class causes it?",
+   "expected": "409, InsufficientStock (raised by Inventory.reserve)",
+   "grader": {
+    "type": "keywords",
+    "keywords": [
+     "409",
+     "InsufficientStock"
+    ],
+    "all": true
+   },
+   "reference": "It returns 409 because reserve raises InsufficientStock.",
+   "wrong": "It returns 422 (ValidationError)."
+  },
+  {
+   "id": "L3",
+   "category": "read-file-bugfix",
+   "context_file": "inventory_service.py",
+   "question": "Customers who order 100 units only get a 5 % discount instead of 12 %. Find the bug and return ONLY the corrected bulk_discount_pct function (full definition) in a ```python code block.",
+   "expected": "iterate the tiers from the highest threshold down (reversed / sorted descending) or keep the last match",
+   "grader": {
+    "type": "python_tests",
+    "entry": "bulk_discount_pct",
+    "module": "inventory_service.py",
+    "tests": "from decimal import Decimal as _D\nassert bulk_discount_pct(100) == _D('12')\nassert bulk_discount_pct(250) == _D('12')\nassert bulk_discount_pct(50) == _D('8')\nassert bulk_discount_pct(99) == _D('8')\nassert bulk_discount_pct(10) == _D('5')\nassert bulk_discount_pct(9) == _D('0')\nassert line_total(OrderLine('X', 100, _D('1.00')), include_vat=False) == _D('88.00')\ntry:\n    bulk_discount_pct(-1)\n    raise AssertionError('negative accepted')\nexcept ValidationError:\n    pass\n"
+   },
+   "reference": "```python\ndef bulk_discount_pct(quantity: int) -> Decimal:\n    if quantity < 0:\n        raise ValidationError('quantity cannot be negative')\n    for threshold, pct in reversed(BULK_TIERS):\n        if quantity >= threshold:\n            return pct\n    return Decimal('0')\n```",
+   "wrong": "```python\ndef bulk_discount_pct(quantity: int) -> Decimal:\n    for threshold, pct in BULK_TIERS:\n        if quantity > threshold:\n            return pct\n    return Decimal('0')\n```"
+  },
+  {
+   "id": "L4",
+   "category": "read-file",
+   "context_file": "inventory_service.py",
+   "question": "Which environment variable sets the warehouse id, and what is its default value? And how many minutes does a reservation last before it expires?",
+   "expected": "INVENTORY_WAREHOUSE, default LIS-01; 15 minutes",
+   "grader": {
+    "type": "keywords",
+    "keywords": [
+     "INVENTORY_WAREHOUSE",
+     "LIS-01",
+     "15"
+    ],
+    "all": true
+   },
+   "reference": "INVENTORY_WAREHOUSE (default LIS-01); reservations expire after 15 minutes.",
+   "wrong": "WAREHOUSE_ID, default LIS-01, 60 minutes."
+  }
+ ]
+}

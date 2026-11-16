@@ -1,0 +1,711 @@
+ts,model,question_id,category,grader,n_ctx,kv_cache,input_tokens,output_tokens,prefill_tps,gen_tps,ttft_ms,total_time_s,oom,error,phone_auto_grade,regrade_auto_grade,grade_changed,regrade_extracted,regrade_detail,phone_grade_detail
+2026-11-15 12:18:44,Qwen3-1.7B-Q4_K_M,S1,shell,shell,8192,f16,159,14,25.84,0.27,6157.7,54.66,False,,fail,pass,True,grep -c 'ERROR' app.log,rc=0 stdout='7' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/grep: Permission denied'
+2026-11-15 12:19:39,Qwen3-1.7B-Q4_K_M,S2,shell,shell,8192,f16,159,23,10.0,0.26,4502.9,88.35,False,,fail,fail,False,"find src/ tests/ docs/ -type f -name ""*.py"" | sort",rc=0 stdout='src/main.py\nsrc/util/helpers.py\ntests/test_main.py' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/sort: Permission denied\n/data/data'
+2026-11-15 12:21:07,Qwen3-1.7B-Q4_K_M,S3,shell,shell,8192,f16,163,18,13.62,0.28,4042.4,64.62,False,,fail,fail,False,rename 's/\.\txt$/.md/' *.txt,rc=127 stdout='' stderr='bash: line 1: rename: command not found',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/rename: Permission denied'
+2026-11-15 12:22:12,Qwen3-1.7B-Q4_K_M,S4,shell,shell,8192,f16,169,19,16.72,0.28,3654.9,67.79,False,,fail,fail,False,sort -nrk3 data.csv | head -n 3,"rc=0 stdout='name,city,score\ngita,Porto,9\nfilipe,Lisbon,85' stderr=''",rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/sort: Permission denied\n/data/data'
+2026-11-15 12:23:20,Qwen3-1.7B-Q4_K_M,S5,shell,shell,8192,f16,157,27,12.69,0.28,3868.4,95.65,False,,fail,pass,True,sed -i 's/localhost/127.0.0.1/g' config.ini,rc=0 stdout='' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/sed: Permission denied'
+2026-11-15 12:24:56,Qwen3-1.7B-Q4_K_M,S6,git,shell,8192,f16,133,26,13.64,0.29,4567.3,89.8,False,,fail,fail,False,git log --pretty=%H | grep -E 'fix parser' | awk '{print $1}',rc=0 stdout='' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/git: Permission denied\n/data/data/'
+2026-11-15 12:26:26,Qwen3-1.7B-Q4_K_M,S7,git,shell,8192,f16,132,12,11.9,0.28,3624.1,42.85,False,,fail,pass,True,git checkout -b feature/login,"rc=0 stdout='' stderr=""Switched to a new branch 'feature/login'""",rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/git: Permission denied'
+2026-11-15 12:27:09,Qwen3-1.7B-Q4_K_M,T1,termux,keywords,8192,f16,120,25,12.12,0.28,4308.3,91.13,False,,fail,fail,False,,keywords found: ['ripgrep'],keywords found: ['ripgrep']
+2026-11-15 12:28:40,Qwen3-1.7B-Q4_K_M,R1,regex,regex_fullmatch,8192,f16,141,23,18.38,0.25,3987.2,91.87,False,,fail,fail,False,^\d{4}-\d{2}-\d{2}$,"misclassified: ['2026-13-01', '2026-00-10', '2026-11-32', '2026-11-00']","misclassified: ['2026-13-01', '2026-00-10', '2026-11-32', '2026-11-00']"
+2026-11-15 12:30:12,Qwen3-1.7B-Q4_K_M,R2,regex,regex_findall,8192,f16,121,27,13.65,0.3,3533.0,91.65,False,,fail,fail,False,\b[\w.-]+@[\w.-]+\.\w+\b,"found=['ana.silva@example.com', 'support@fold-bench.dev', 'test@mail.co.uk']","found=['ana.silva@example.com', 'support@fold-bench.dev', 'test@mail.co.uk']"
+2026-11-15 12:31:43,Qwen3-1.7B-Q4_K_M,E1,error,keywords,8192,f16,156,48,20.04,0.27,4406.3,178.68,False,,pass,pass,False,,keywords found: ['int('],keywords found: ['int(']
+2026-11-15 12:34:42,Qwen3-1.7B-Q4_K_M,E2,error,keywords,8192,f16,110,56,9.92,0.27,4258.3,207.6,False,,pass,pass,False,,keywords found: ['--allow-unrelated-histories'],keywords found: ['--allow-unrelated-histories']
+2026-11-15 12:38:10,Qwen3-1.7B-Q4_K_M,B1,bugfix-python,python_tests,8192,f16,171,99,21.94,0.26,4715.8,375.41,False,,fail,fail,False,"def median(nums):
+    if not nums:
+        raise ValueError(""Cannot compute median of empty list"")
+    s = sorted(nums)
+    n = len(s)
+    mid = n // 2
+    if n % 2 == 0:
+        return (s[mid] + s[mid + 1]) / 2
+    return s[mid]",AssertionError,AssertionError
+2026-11-15 12:44:25,Qwen3-1.7B-Q4_K_M,B2,bugfix-js,node_tests,8192,f16,166,54,20.54,0.28,4752.1,191.71,False,,pass,pass,False,"function chunk(arr, size) {
+  const out = [];
+  for (let i = 0; i < arr.length; i += size) {
+    out.push(arr.slice(i, i + size));
+  }
+  return out;
+}",all tests passed,all tests passed
+2026-11-15 12:47:37,Qwen3-1.7B-Q4_K_M,B3,bugfix-sql,sql,8192,f16,185,11,21.19,0.28,5539.3,40.98,False,,no_code,no_code,False,,no code block,no code block
+2026-11-15 12:48:18,Qwen3-1.7B-Q4_K_M,W1,write-python,python_tests,8192,f16,177,162,22.11,0.27,4823.8,590.65,False,,fail,fail,False,"def parse_duration(text: str) -> int:
+    if not text:
+        raise ValueError
+    parts = text.split()
+    total = 0
+    for part in parts:
+        if part == 'h':
+            total += 3600
+        elif part == 'm':
+            total += 60
+        elif part == 's':
+            total += 1
+        else:
+            raise ValueError
+    return total
+
+# Tests
+assert parse_duration('1h30m15s') == 3600 + 1800 + 15 = 5415
+assert parse_duration('45s') == 45
+assert parse_duration('2h') == 7200",SyntaxError: invalid syntax,SyntaxError: invalid syntax
+2026-11-15 12:58:09,Qwen3-1.7B-Q4_K_M,W2,write-js,node_tests,8192,f16,145,108,16.17,0.27,4665.3,404.0,False,,fail,fail,False,"function slugify(text) {
+    text = text.toLowerCase();
+    text = text.replace(/[^a-z0-9]/g, '-');
+    text = text.replace(/^-/g, '');
+    text = text.replace(/^-$/g, '');
+    return text;
+}
+
+console.assert(slugify('Hello, World!') === 'hello-world');
+console.assert(slugify('Hello!') === 'hello');
+console.assert(slugify('123-abc-def') === '123-abc-def');",AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:,AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+2026-11-15 13:04:53,Qwen3-1.7B-Q4_K_M,L1,read-file,keywords,8192,f16,4280,14,25.66,0.28,164182.9,210.68,False,,fail,fail,False,,keywords found: ['retries=4'],keywords found: ['retries=4']
+2026-11-15 13:08:24,Qwen3-1.7B-Q4_K_M,L2,read-file,keywords,8192,f16,4263,38,5.54,0.29,6151.5,134.44,False,,pass,pass,False,,"keywords found: ['409', 'InsufficientStock']","keywords found: ['409', 'InsufficientStock']"
+2026-11-15 13:10:38,Qwen3-1.7B-Q4_K_M,L3,read-file-bugfix,python_tests,8192,f16,4282,136,6.94,0.28,7656.9,494.07,False,,fail,fail,False,"def bulk_discount_pct(quantity: int) -> Decimal:
+    """"""Returns the discount percentage for a line with `quantity` units.
+
+    The HIGHEST tier whose minimum quantity is reached applies:
+    10-49 units -> 5 %, 50-99 units -> 8 %, 100 or more -> 12 %, fewer than 10 -> 0 %.
+    """"""
+    if quantity < 0:
+        raise ValidationError(""quantity cannot be negative"")
+    for threshold, pct in BULK_TIERS:
+        if quantity >= threshold:
+            return pct
+    return Decimal(""0"")",AssertionError,AssertionError
+2026-11-15 13:18:53,Qwen3-1.7B-Q4_K_M,L4,read-file,keywords,8192,f16,4265,40,5.33,0.29,6775.5,143.51,False,,pass,pass,False,,"keywords found: ['INVENTORY_WAREHOUSE', 'LIS-01', '15']","keywords found: ['INVENTORY_WAREHOUSE', 'LIS-01', '15']"
+2026-11-15 13:22:31,Qwen3-1.7B-Q8_0,S1,shell,shell,8192,f16,159,14,34.06,0.27,4673.4,52.9,False,,fail,pass,True,grep -c 'ERROR' app.log,rc=0 stdout='7' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/grep: Permission denied'
+2026-11-15 13:23:24,Qwen3-1.7B-Q8_0,S2,shell,shell,8192,f16,159,20,10.52,0.28,4286.2,72.34,False,,fail,fail,False,"find src tests docs -type f -name ""*.py"" | sort",rc=0 stdout='src/main.py\nsrc/util/helpers.py\ntests/test_main.py' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/find: Permission denied\n/data/data'
+2026-11-15 13:24:36,Qwen3-1.7B-Q8_0,S3,shell,shell,8192,f16,163,18,15.17,0.28,3634.0,65.13,False,,fail,fail,False,rename 's/\.txt$/.md/' *.txt,rc=127 stdout='' stderr='bash: line 1: rename: command not found',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/rename: Permission denied'
+2026-11-15 13:25:41,Qwen3-1.7B-Q8_0,S4,shell,shell,8192,f16,169,26,17.34,0.3,3526.5,87.23,False,,fail,pass,True,"awk -F',' '{print $3}' data.csv | sort -nr | head -n3",rc=0 stdout='97\n91\n88' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/awk: Permission denied\n/data/data/'
+2026-11-15 13:27:08,Qwen3-1.7B-Q8_0,S5,shell,shell,8192,f16,157,27,13.37,0.3,3669.2,91.62,False,,fail,pass,True,sed -i 's/localhost/127.0.0.1/g' config.ini,rc=0 stdout='' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/sed: Permission denied'
+2026-11-15 13:28:40,Qwen3-1.7B-Q8_0,S6,git,shell,8192,f16,133,24,15.11,0.28,4120.1,86.44,False,,fail,pass,True,git log --pretty=%h --grep='fix parser' | head -n 1,rc=0 stdout='49971a9' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/git: Permission denied\n/data/data/'
+2026-11-15 13:30:07,Qwen3-1.7B-Q8_0,S7,git,shell,8192,f16,132,12,10.34,0.29,4165.2,42.67,False,,fail,pass,True,git checkout -b feature/login,"rc=0 stdout='' stderr=""Switched to a new branch 'feature/login'""",rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/git: Permission denied'
+2026-11-15 13:30:50,Qwen3-1.7B-Q8_0,T1,termux,keywords,8192,f16,120,25,13.75,0.29,3803.5,86.91,False,,fail,fail,False,,keywords found: ['ripgrep'],keywords found: ['ripgrep']
+2026-11-15 13:32:16,Qwen3-1.7B-Q8_0,R1,regex,regex_fullmatch,8192,f16,141,23,20.31,0.3,3607.6,77.62,False,,fail,fail,False,^\d{4}-\d{2}-\d{2}$,"misclassified: ['2026-13-01', '2026-00-10', '2026-11-32', '2026-11-00']","misclassified: ['2026-13-01', '2026-00-10', '2026-11-32', '2026-11-00']"
+2026-11-15 13:33:34,Qwen3-1.7B-Q8_0,R2,regex,regex_findall,8192,f16,121,22,8.88,0.29,5424.9,77.89,False,,fail,fail,False,\b[\w.-]+@[\w.-]+\.\w+\b,"found=['ana.silva@example.com', 'support@fold-bench.dev', 'test@mail.co.uk']","found=['ana.silva@example.com', 'support@fold-bench.dev', 'test@mail.co.uk']"
+2026-11-15 13:34:52,Qwen3-1.7B-Q8_0,E1,error,keywords,8192,f16,156,56,22.52,0.28,3923.8,201.27,False,,pass,pass,False,,keywords found: ['int('],keywords found: ['int(']
+2026-11-15 13:38:13,Qwen3-1.7B-Q8_0,E2,error,keywords,8192,f16,110,55,11.58,0.27,3648.3,201.39,False,,pass,pass,False,,keywords found: ['--allow-unrelated-histories'],keywords found: ['--allow-unrelated-histories']
+2026-11-15 13:41:35,Qwen3-1.7B-Q8_0,B1,bugfix-python,python_tests,8192,f16,171,70,22.78,0.26,4539.6,268.08,False,,fail,fail,False,"def median(nums):
+    s = sorted(nums)
+    n = len(s)
+    if not nums:
+        raise ValueError
+    mid = n // 2
+    if n % 2 == 0:
+        return (s[mid] + s[mid + 1]) / 2
+    return s[mid]",AssertionError,AssertionError
+2026-11-15 13:46:03,Qwen3-1.7B-Q8_0,B2,bugfix-js,node_tests,8192,f16,166,54,23.33,0.3,4175.3,182.31,False,,pass,pass,False,"function chunk(arr, size) {
+  const out = [];
+  for (let i = 0; i < arr.length; i += size) {
+    out.push(arr.slice(i, i + size));
+  }
+  return out;
+}",all tests passed,all tests passed
+2026-11-15 13:49:06,Qwen3-1.7B-Q8_0,B3,bugfix-sql,sql,8192,f16,185,41,27.23,0.29,4316.2,143.23,False,,pass,pass,False,"SELECT customer, SUM(amount) AS total
+FROM orders
+WHERE status = 'paid'
+GROUP BY customer
+HAVING total > 100
+ORDER BY total DESC;","rows=[['dave', 140.0], ['alice', 125.0], ['bob', 120.0]]","rows=[['dave', 140.0], ['alice', 125.0], ['bob', 120.0]]"
+2026-11-15 13:51:29,Qwen3-1.7B-Q8_0,W1,write-python,python_tests,8192,f16,177,214,27.3,0.29,3904.0,731.3,False,,fail,fail,False,"def parse_duration(text: str) -> int:
+    if not text:
+        raise ValueError(""Empty string"")
+    units = {'h': 3600, 'm': 60, 's': 1}
+    total = 0
+    i = 0
+    while i < len(text):
+        if text[i] in units:
+            unit = text[i]
+            val = 1
+            i += 1
+            while i < len(text) and text[i].isdigit():
+                val = val * 10 + int(text[i])
+                i += 1
+            total += units[unit] * val
+        else:
+            i += 1
+    return total
+
+# Tests
+assert parse_duration('1h30m15s') == 1*3600 + 30*60 + 15
+assert parse_duration('45s') == 45
+assert parse_duration('2h') == 7200",AssertionError,AssertionError
+2026-11-15 14:03:40,Qwen3-1.7B-Q8_0,W2,write-js,node_tests,8192,f16,145,104,17.38,0.28,4350.2,378.36,False,,fail,fail,False,"function slugify(text) {
+  text = text.toLowerCase();
+  text = text.replace(/[^a-z0-9]/g, '-');
+  text = text.replace(/^-*|-+$/, '');
+  return text;
+}
+
+console.assert(slugify('Hello, World!') === 'hello-world');
+console.assert(slugify('Hello!') === 'hello');
+console.assert(slugify('123-abc-456') === '123-abc-456');",AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:,AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+2026-11-15 14:09:59,Qwen3-1.7B-Q8_0,L1,read-file,keywords,8192,f16,4280,14,31.11,0.3,135437.6,178.78,False,,fail,fail,False,,keywords found: ['retries=4'],keywords found: ['retries=4']
+2026-11-15 14:12:58,Qwen3-1.7B-Q8_0,L2,read-file,keywords,8192,f16,4263,33,5.97,0.29,5721.6,115.08,False,,pass,pass,False,,"keywords found: ['409', 'InsufficientStock']","keywords found: ['409', 'InsufficientStock']"
+2026-11-15 14:14:53,Qwen3-1.7B-Q8_0,L3,read-file-bugfix,python_tests,8192,f16,4282,136,6.49,0.29,8188.9,478.21,False,,fail,fail,False,"def bulk_discount_pct(quantity: int) -> Decimal:
+    """"""Returns the discount percentage for a line with `quantity` units.
+
+    The HIGHEST tier whose minimum quantity is reached applies:
+    10-49 units -> 5 %, 50-99 units -> 8 %, 100 or more -> 12 %, fewer than 10 -> 0 %.
+    """"""
+    if quantity < 0:
+        raise ValidationError(""quantity cannot be negative"")
+    for threshold, pct in BULK_TIERS:
+        if quantity >= threshold:
+            return pct
+    return Decimal(""0"")",AssertionError,AssertionError
+2026-11-15 14:22:51,Qwen3-1.7B-Q8_0,L4,read-file,keywords,8192,f16,4265,52,6.21,0.27,5815.5,193.44,False,,pass,pass,False,,"keywords found: ['INVENTORY_WAREHOUSE', 'LIS-01', '15']","keywords found: ['INVENTORY_WAREHOUSE', 'LIS-01', '15']"
+2026-11-15 14:27:19,Qwen3-4B-Instruct-2507-Q4_0,S1,shell,shell,8192,f16,155,20,17.76,0.21,8729.5,99.18,False,,fail,fail,False,wc -l < <(grep -c 'ERROR' app.log),rc=0 stdout='1' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/wc: Permission denied\n/data/data/c'
+2026-11-15 14:28:58,Qwen3-4B-Instruct-2507-Q4_0,S2,shell,shell,8192,f16,155,18,7.17,0.21,5730.9,86.52,False,,fail,pass,True,"find . -type f -name ""*.py"" | sort",rc=0 stdout='./setup.py\n./src/main.py\n./src/util/helpers.py\n./tests/test_main.py' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/find: Permission denied\n/data/data'
+2026-11-15 14:30:25,Qwen3-4B-Instruct-2507-Q4_0,S3,shell,shell,8192,f16,159,25,8.13,0.22,6278.1,115.33,False,,fail,pass,True,"for file in *.txt; do mv ""$file"" ""${file%.txt}.md""; done",rc=0 stdout='' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/mv: Permission denied\n/data/data/c'
+2026-11-15 14:32:20,Qwen3-4B-Instruct-2507-Q4_0,S4,shell,shell,8192,f16,165,29,8.91,0.21,6400.5,137.73,False,,fail,pass,True,"awk -F',' 'NR>1 {print $3}' data.csv | sort -nr | head -3",rc=0 stdout='97\n91\n88' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/awk: Permission denied\n/data/data/'
+2026-11-15 14:34:38,Qwen3-4B-Instruct-2507-Q4_0,S5,shell,shell,8192,f16,153,27,7.68,0.23,5864.5,120.98,False,,fail,pass,True,sed -i 's/localhost/127.0.0.1/g' config.ini,rc=0 stdout='' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/sed: Permission denied'
+2026-11-15 14:36:39,Qwen3-4B-Instruct-2507-Q4_0,S6,git,shell,8192,f16,129,26,9.64,0.24,6038.0,111.78,False,,fail,pass,True,"git log --oneline --grep=""fix parser"" | cut -d' ' -f1",rc=0 stdout='49971a9' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/git: Permission denied\n/data/data/'
+2026-11-15 14:38:31,Qwen3-4B-Instruct-2507-Q4_0,S7,git,shell,8192,f16,128,12,7.7,0.23,5066.9,53.84,False,,fail,pass,True,git checkout -b feature/login,"rc=0 stdout='' stderr=""Switched to a new branch 'feature/login'""",rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/git: Permission denied'
+2026-11-15 14:39:25,Qwen3-4B-Instruct-2507-Q4_0,T1,termux,keywords,8192,f16,116,20,9.26,0.23,5201.9,88.93,False,,pass,pass,False,,"keywords found: ['ripgrep', 'termux-setup-storage']","keywords found: ['ripgrep', 'termux-setup-storage']"
+2026-11-15 14:40:54,Qwen3-4B-Instruct-2507-Q4_0,R1,regex,regex_fullmatch,8192,f16,137,23,10.59,0.23,6523.1,100.6,False,,fail,fail,False,^\d{4}-\d{2}-\d{2}$,"misclassified: ['2026-13-01', '2026-00-10', '2026-11-32', '2026-11-00']","misclassified: ['2026-13-01', '2026-00-10', '2026-11-32', '2026-11-00']"
+2026-11-15 14:42:35,Qwen3-4B-Instruct-2507-Q4_0,R2,regex,regex_findall,8192,f16,117,37,8.02,0.22,5512.6,165.67,False,,pass,pass,False,"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b","found=['ana.silva@example.com', 'support@fold-bench.dev', 'j_doe+test@mail.co.uk']","found=['ana.silva@example.com', 'support@fold-bench.dev', 'j_doe+test@mail.co.uk']"
+2026-11-15 14:45:20,Qwen3-4B-Instruct-2507-Q4_0,E1,error,keywords,8192,f16,152,56,13.53,0.22,6230.1,254.28,False,,pass,pass,False,,keywords found: ['int('],keywords found: ['int(']
+2026-11-15 14:49:35,Qwen3-4B-Instruct-2507-Q4_0,E2,error,keywords,8192,f16,106,140,7.01,0.21,5448.1,654.63,False,,pass,pass,False,,keywords found: ['--allow-unrelated-histories'],keywords found: ['--allow-unrelated-histories']
+2026-11-15 15:00:29,Qwen3-4B-Instruct-2507-Q4_0,B1,bugfix-python,python_tests,8192,f16,167,73,13.57,0.23,7320.8,319.59,False,,pass,pass,False,"def median(nums):
+    if not nums:
+        raise ValueError(""Empty list"")
+    s = sorted(nums)
+    n = len(s)
+    mid = n // 2
+    if n % 2 == 0:
+        return (s[mid - 1] + s[mid]) / 2
+    return s[mid]",all tests passed,all tests passed
+2026-11-15 15:05:49,Qwen3-4B-Instruct-2507-Q4_0,B2,bugfix-js,node_tests,8192,f16,162,54,14.04,0.23,6647.0,233.26,False,,pass,pass,False,"function chunk(arr, size) {
+  const out = [];
+  for (let i = 0; i < arr.length; i += size) {
+    out.push(arr.slice(i, i + size));
+  }
+  return out;
+}",all tests passed,all tests passed
+2026-11-15 15:09:43,Qwen3-4B-Instruct-2507-Q4_0,B3,bugfix-sql,sql,8192,f16,181,43,14.67,0.88,7723.1,55.57,False,,pass,pass,False,"SELECT customer, SUM(amount) AS total
+FROM orders
+WHERE status = 'paid'
+GROUP BY customer
+HAVING SUM(amount) > 100
+ORDER BY total DESC;","rows=[['dave', 140.0], ['alice', 125.0], ['bob', 120.0]]","rows=[['dave', 140.0], ['alice', 125.0], ['bob', 120.0]]"
+2026-11-15 15:10:38,Qwen3-4B-Instruct-2507-Q4_0,W1,write-python,python_tests,8192,f16,173,445,72.32,15.83,1436.7,29.49,False,,fail,fail,False,"def parse_duration(text: str) -> int:
+    if not text or not isinstance(text, str):
+        raise ValueError(""Empty or invalid string"")
+    
+    text = text.strip()
+    if not text:
+        raise ValueError(""Empty string"")
+    
+    # Validate only h, m, s, digits, and optional units
+    import re
+    if not re.match(r'^\d*[hms]$', text):
+        raise ValueError(""Invalid string: contains invalid characters or units"")
+    
+    # Split by units in order h, m, s
+    parts = []
+    if 'h' in text:
+        h_idx = text.find('h')
+        if h_idx == 0 or h_idx == len(text) - 1:
+            raise ValueError(""Invalid format"")
+        h_val = int(text[:h_idx])
+        parts.append(('h', h_val))
+    if 'm' in text:
+        m_idx = text.find('m')
+        if m_idx == 0 or m_idx == len(text) - 1:
+            raise ValueError(""Invalid format"")
+        m_val = int(text[:m_idx])
+        parts.append(('m', m_val))
+    if 's' in text:
+        s_idx = text.find('s')
+        if s_idx == 0 or s_idx == len(text) - 1:
+            raise ValueError(""Invalid format"")
+        s_val = int(text[:s_idx])
+        parts.append(('s', s_val))
+    
+    # If no valid units, raise error
+    if not parts:
+        raise ValueError(""No valid units found"")
+    
+    total = 0
+    for unit, val in parts:
+        if unit == 'h':
+            total += val * 3600
+        elif unit == 'm':
+            total += val * 60
+        elif unit == 's':
+            total += val
+    
+    return total
+
+# Tests
+assert parse_duration('1h30m15s') == 5415
+assert parse_duration('45s') == 45
+assert parse_duration('2h') == 7200",ValueError: Invalid string: contains invalid characters or units,ValueError: Invalid string: contains invalid characters or units
+2026-11-15 15:11:08,Qwen3-4B-Instruct-2507-Q4_0,W2,write-js,node_tests,8192,f16,141,138,75.16,17.03,977.4,9.02,False,,fail,fail,False,"function slugify(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+console.assert(slugify('Hello, World!') === 'hello-world', 'Test 1: Basic punctuation');
+console.assert(slugify('  Spaces  and  tabs  ') === 'spaces-and-tabs', 'Test 2: Multiple spaces and tabs');
+console.assert(slugify('123-ABC-456') === '123-abc-456', 'Test 3: Numbers and letters with hyphens');",AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:,AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+2026-11-15 15:11:17,Qwen3-4B-Instruct-2507-Q4_0,L1,read-file,keywords,8192,f16,4276,14,34.62,5.01,121599.0,124.19,False,,fail,fail,False,,keywords found: ['retries=4'],keywords found: ['retries=4']
+2026-11-15 15:13:21,Qwen3-4B-Instruct-2507-Q4_0,L2,read-file,keywords,8192,f16,4259,74,10.79,4.86,2808.0,17.82,False,,pass,pass,False,,"keywords found: ['409', 'InsufficientStock']","keywords found: ['409', 'InsufficientStock']"
+2026-11-15 15:13:39,Qwen3-4B-Instruct-2507-Q4_0,L3,read-file-bugfix,python_tests,8192,f16,4278,136,11.06,4.21,4451.7,36.55,False,,fail,fail,False,"def bulk_discount_pct(quantity: int) -> Decimal:
+    """"""Returns the discount percentage for a line with `quantity` units.
+
+    The HIGHEST tier whose minimum quantity is reached applies:
+    10-49 units -> 5 %, 50-99 units -> 8 %, 100 or more -> 12 %, fewer than 10 -> 0 %.
+    """"""
+    if quantity < 0:
+        raise ValidationError(""quantity cannot be negative"")
+    for threshold, pct in BULK_TIERS:
+        if quantity >= threshold:
+            return pct
+    return Decimal(""0"")",AssertionError,AssertionError
+2026-11-15 15:14:16,Qwen3-4B-Instruct-2507-Q4_0,L4,read-file,keywords,8192,f16,4261,50,9.84,4.27,3275.5,14.75,False,,pass,pass,False,,"keywords found: ['INVENTORY_WAREHOUSE', 'LIS-01', '15']","keywords found: ['INVENTORY_WAREHOUSE', 'LIS-01', '15']"
+2026-11-15 15:24:51,Qwen3-4B-Instruct-2507-Q4_K_M,S1,shell,shell,8192,f16,155,14,16.33,0.23,9502.1,66.15,False,,fail,pass,True,grep -c 'ERROR' app.log,rc=0 stdout='7' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/grep: Permission denied'
+2026-11-15 15:25:57,Qwen3-4B-Instruct-2507-Q4_K_M,S2,shell,shell,8192,f16,155,18,6.95,0.23,5904.6,78.49,False,,fail,pass,True,"find . -type f -name ""*.py"" | sort",rc=0 stdout='./setup.py\n./src/main.py\n./src/util/helpers.py\n./tests/test_main.py' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/find: Permission denied\n/data/data'
+2026-11-15 15:27:16,Qwen3-4B-Instruct-2507-Q4_K_M,S3,shell,shell,8192,f16,159,25,8.15,0.22,6259.1,117.88,False,,fail,pass,True,"for txt in *.txt; do mv ""$txt"" ""${txt%.txt}.md""; done",rc=0 stdout='' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/mv: Permission denied\n/data/data/c'
+2026-11-15 15:29:14,Qwen3-4B-Instruct-2507-Q4_K_M,S4,shell,shell,8192,f16,165,27,8.1,0.24,7038.6,117.16,False,,fail,fail,False,awk 'NR>1{print $4}' data.csv | sort -nr | head -n3,rc=0 stdout='' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/awk: Permission denied\n/data/data/'
+2026-11-15 15:31:11,Qwen3-4B-Instruct-2507-Q4_K_M,S5,shell,shell,8192,f16,153,27,7.7,0.23,5849.4,117.27,False,,fail,pass,True,sed -i 's/localhost/127.0.0.1/g' config.ini,rc=0 stdout='' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/sed: Permission denied'
+2026-11-15 15:33:08,Qwen3-4B-Instruct-2507-Q4_K_M,S6,git,shell,8192,f16,129,24,8.94,0.24,6508.1,104.1,False,,fail,pass,True,git log --grep='fix parser' --format='%h' | head -n1,rc=0 stdout='49971a9' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/git: Permission denied\n/data/data/'
+2026-11-15 15:34:52,Qwen3-4B-Instruct-2507-Q4_K_M,S7,git,shell,8192,f16,128,12,6.94,0.22,5626.8,54.52,False,,fail,pass,True,git checkout -b feature/login,"rc=0 stdout='' stderr=""Switched to a new branch 'feature/login'""",rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/git: Permission denied'
+2026-11-15 15:35:47,Qwen3-4B-Instruct-2507-Q4_K_M,T1,termux,keywords,8192,f16,116,22,5.79,0.24,8305.8,97.31,False,,fail,fail,False,,keywords found: ['ripgrep'],keywords found: ['ripgrep']
+2026-11-15 15:37:24,Qwen3-4B-Instruct-2507-Q4_K_M,R1,regex,regex_fullmatch,8192,f16,137,23,10.62,0.24,6514.6,96.53,False,,fail,fail,False,^\d{4}-\d{2}-\d{2}$,"misclassified: ['2026-13-01', '2026-00-10', '2026-11-32', '2026-11-00']","misclassified: ['2026-13-01', '2026-00-10', '2026-11-32', '2026-11-00']"
+2026-11-15 15:39:01,Qwen3-4B-Instruct-2507-Q4_K_M,R2,regex,regex_findall,8192,f16,117,37,8.23,0.23,5361.5,158.59,False,,pass,pass,False,"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b","found=['ana.silva@example.com', 'support@fold-bench.dev', 'j_doe+test@mail.co.uk']","found=['ana.silva@example.com', 'support@fold-bench.dev', 'j_doe+test@mail.co.uk']"
+2026-11-15 15:41:40,Qwen3-4B-Instruct-2507-Q4_K_M,E1,error,keywords,8192,f16,152,53,11.9,0.22,7076.0,238.88,False,,pass,pass,False,,keywords found: ['int('],keywords found: ['int(']
+2026-11-15 15:45:38,Qwen3-4B-Instruct-2507-Q4_K_M,E2,error,keywords,8192,f16,106,176,6.9,0.22,5526.4,817.21,False,,fail,fail,False,,keywords found: [],keywords found: []
+2026-11-15 15:59:16,Qwen3-4B-Instruct-2507-Q4_K_M,B1,bugfix-python,python_tests,8192,f16,167,74,12.16,0.23,8174.4,325.68,False,,pass,pass,False,"def median(nums):
+    if not nums:
+        raise ValueError(""Empty list provided"")
+    s = sorted(nums)
+    n = len(s)
+    mid = n // 2
+    if n % 2 == 0:
+        return (s[mid - 1] + s[mid]) / 2
+    return s[mid]",all tests passed,all tests passed
+2026-11-15 16:04:41,Qwen3-4B-Instruct-2507-Q4_K_M,B2,bugfix-js,node_tests,8192,f16,162,54,11.26,0.22,8291.1,246.59,False,,pass,pass,False,"function chunk(arr, size) {
+  const out = [];
+  for (let i = 0; i < arr.length; i += size) {
+    out.push(arr.slice(i, i + size));
+  }
+  return out;
+}",all tests passed,all tests passed
+2026-11-15 16:08:49,Qwen3-4B-Instruct-2507-Q4_K_M,B3,bugfix-sql,sql,8192,f16,181,41,12.6,0.21,8992.9,203.59,False,,pass,pass,False,"SELECT customer, SUM(amount) AS total
+FROM orders
+WHERE status = 'paid'
+GROUP BY customer
+HAVING total > 100
+ORDER BY total DESC;","rows=[['dave', 140.0], ['alice', 125.0], ['bob', 120.0]]","rows=[['dave', 140.0], ['alice', 125.0], ['bob', 120.0]]"
+2026-11-15 16:12:12,Qwen3-4B-Instruct-2507-Q4_K_M,W1,write-python,python_tests,8192,f16,173,768,12.38,0.23,8308.2,3399.64,False,,fail,fail,False,"def parse_duration(text: str) -> int:
+    if not text or not isinstance(text, str):
+        raise ValueError(""Empty or invalid string"")
+    
+    text = text.strip()
+    if not text:
+        raise ValueError(""Empty string"")
+    
+    # Validate only h, m, s units (in order), each at most once
+    units = {'h': 3600, 'm': 60, 's': 1}
+    duration = 0
+    parts = []
+    i = 0
+    
+    while i < len(text):
+        if text[i].isdigit():
+            # Extract number
+            num_start = i
+            while i < len(text) and text[i].isdigit():
+                i += 1
+            num = int(text[num_start:i])
+            parts.append(num)
+        elif text[i] in 'hms':
+            if len(parts) > 0 and parts[-1] > 0:
+                # Only one unit per type, and in order h, m, s
+                if parts[-1] > 0 and text[i] in 'hms':
+                    # Check if unit is valid and not repeated
+                    if text[i] == 'h' and len(parts) > 0 and parts[-1] > 0:
+                        duration += parts[-1] * 3600
+                    elif text[i] == 'm' and len(parts) > 0 and parts[-1] > 0:
+                        duration += parts[-1] * 60
+                    elif text[i] == 's' and len(parts) > 0 and parts[-1] > 0:
+                        duration += parts[-1] * 1
+                    else:
+                        raise ValueError(""Invalid unit or invalid format"")
+            else:
+                # First unit
+                if text[i] == 'h':
+                    duration += num * 3600
+                elif text[i] == 'm':
+                    duration += num * 60
+                elif text[i] == 's':
+                    duration += num * 1
+                else:
+                    raise ValueError(""Invalid unit"")
+        else:
+            raise ValueError(""Invalid character in duration string"")
+    
+    # Re-parse with simpler logic: split by units
+    text = text.strip()
+    if not text:
+        raise ValueError(""Empty string"")
+    
+    # Simple parsing: match h, m, s in order
+    duration = 0
+    i = 0
+    while i < len(text):
+        if text[i].isdigit():
+            # Extract number
+            num_start = i
+            while i < len(text) and text[i].isdigit():
+                i += 1
+            num = int(text[num_start:i])
+            # Check next char
+            if i < len(text) and text[i] == 'h':
+                duration += num * 3600
+                i += 1
+            elif i < len(text) and text[i] == 'm':
+                duration += num * 60
+                i += 1
+            elif i < len(text) and text[i] == 's':
+                duration += num * 1
+                i += 1
+            else:
+                # No unit found
+                raise ValueError(""Invalid format"")
+        else:
+            # Not a digit, must be a unit
+            if text[i] in 'hms':
+                # Check if preceded by a number
+                if i == 0 or not text[i-1].isdigit():
+                    raise ValueError(""Invalid format"")
+                # Extract number before unit
+                num_start = i - 1
+                num = int(text[num_start:i])
+                if text[i] == 'h':",IndentationError: expected an indented block after 'if' statement on line 89,IndentationError: expected an indented block after 'if' statement on line 89
+2026-11-15 17:08:52,Qwen3-4B-Instruct-2507-Q4_K_M,W2,write-js,node_tests,8192,f16,141,122,9.3,0.22,7725.7,549.78,False,,fail,fail,False,"function slugify(text) {
+    return text
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/, '');
+}
+
+console.assert(slugify('Hello, World!') === 'hello-world', 'Basic punctuation removal');
+console.assert(slugify('ABC123!@#') === 'abc123', 'Mixed case and symbols');
+console.assert(slugify('  leading-and-trailing  ') === 'leading-and-trailing', 'Leading and trailing spaces');",AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:,AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+2026-11-15 17:18:02,Qwen3-4B-Instruct-2507-Q4_K_M,L1,read-file,keywords,8192,f16,4276,14,11.68,0.23,360461.9,417.77,False,,fail,fail,False,,keywords found: ['retries=4'],keywords found: ['retries=4']
+2026-11-15 17:25:00,Qwen3-4B-Instruct-2507-Q4_K_M,L2,read-file,keywords,8192,f16,4259,114,2.69,0.22,11175.8,522.72,False,,pass,pass,False,,"keywords found: ['409', 'InsufficientStock']","keywords found: ['409', 'InsufficientStock']"
+2026-11-15 17:33:43,Qwen3-4B-Instruct-2507-Q4_K_M,L3,read-file-bugfix,python_tests,8192,f16,4278,136,3.21,0.23,15266.3,613.0,False,,fail,fail,False,"def bulk_discount_pct(quantity: int) -> Decimal:
+    """"""Returns the discount percentage for a line with `quantity` units.
+
+    The HIGHEST tier whose minimum quantity is reached applies:
+    10-49 units -> 5 %, 50-99 units -> 8 %, 100 or more -> 12 %, fewer than 10 -> 0 %.
+    """"""
+    if quantity < 0:
+        raise ValidationError(""quantity cannot be negative"")
+    for threshold, pct in BULK_TIERS:
+        if quantity >= threshold:
+            return pct
+    return Decimal(""0"")",AssertionError,AssertionError
+2026-11-15 17:43:56,Qwen3-4B-Instruct-2507-Q4_K_M,L4,read-file,keywords,8192,f16,4261,64,2.52,0.23,12713.0,287.98,False,,pass,pass,False,,"keywords found: ['INVENTORY_WAREHOUSE', 'LIS-01', '15']","keywords found: ['INVENTORY_WAREHOUSE', 'LIS-01', '15']"
+2026-11-15 17:57:57,Qwen3-4B-Instruct-2507-Q8_0,S1,shell,shell,8192,f16,155,14,19.44,0.23,7978.7,63.81,False,,fail,pass,True,grep -c 'ERROR' app.log,rc=0 stdout='7' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/grep: Permission denied'
+2026-11-15 17:59:00,Qwen3-4B-Instruct-2507-Q8_0,S2,shell,shell,8192,f16,155,18,8.13,0.23,5049.1,78.13,False,,fail,pass,True,"find . -type f -name ""*.py"" | sort",rc=0 stdout='./setup.py\n./src/main.py\n./src/util/helpers.py\n./tests/test_main.py' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/find: Permission denied\n/data/data'
+2026-11-15 18:00:19,Qwen3-4B-Instruct-2507-Q8_0,S3,shell,shell,8192,f16,159,25,9.58,0.22,5326.4,115.0,False,,fail,pass,True,"for file in *.txt; do mv ""$file"" ""${file%.txt}.md""; done",rc=0 stdout='' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/mv: Permission denied\n/data/data/c'
+2026-11-15 18:02:14,Qwen3-4B-Instruct-2507-Q8_0,S4,shell,shell,8192,f16,165,26,8.73,0.24,6544.7,112.04,False,,fail,fail,False,awk 'NR>1{print $4}' data.csv | sort -nr | head -3,rc=0 stdout='' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/awk: Permission denied\n/data/data/'
+2026-11-15 18:04:06,Qwen3-4B-Instruct-2507-Q8_0,S5,shell,shell,8192,f16,153,27,5.18,0.22,8690.7,125.37,False,,fail,pass,True,sed -i 's/localhost/127.0.0.1/g' config.ini,rc=0 stdout='' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/sed: Permission denied'
+2026-11-15 18:06:11,Qwen3-4B-Instruct-2507-Q8_0,S6,git,shell,8192,f16,129,37,10.71,0.23,5429.9,163.81,False,,fail,pass,True,"git log --oneline --grep=""fix parser"" | grep -o '[a-f0-9]\{7\}' | head -n1",rc=0 stdout='49971a9' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/git: Permission denied\n/data/data/'
+2026-11-15 18:08:55,Qwen3-4B-Instruct-2507-Q8_0,S7,git,shell,8192,f16,128,12,8.21,0.23,4755.3,52.52,False,,fail,pass,True,git checkout -b feature/login,"rc=0 stdout='' stderr=""Switched to a new branch 'feature/login'""",rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/git: Permission denied'
+2026-11-15 18:09:48,Qwen3-4B-Instruct-2507-Q8_0,T1,termux,keywords,8192,f16,116,20,9.03,0.23,5333.4,88.05,False,,pass,pass,False,,"keywords found: ['ripgrep', 'termux-setup-storage']","keywords found: ['ripgrep', 'termux-setup-storage']"
+2026-11-15 18:11:16,Qwen3-4B-Instruct-2507-Q8_0,R1,regex,regex_fullmatch,8192,f16,137,23,13.36,0.23,5165.4,101.58,False,,fail,fail,False,^\d{4}-\d{2}-\d{2}$,"misclassified: ['2026-13-01', '2026-00-10', '2026-11-32', '2026-11-00']","misclassified: ['2026-13-01', '2026-00-10', '2026-11-32', '2026-11-00']"
+2026-11-15 18:12:58,Qwen3-4B-Instruct-2507-Q8_0,R2,regex,regex_findall,8192,f16,117,39,9.51,0.23,4648.8,169.03,False,,pass,pass,False,"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b","found=['ana.silva@example.com', 'support@fold-bench.dev', 'j_doe+test@mail.co.uk']","found=['ana.silva@example.com', 'support@fold-bench.dev', 'j_doe+test@mail.co.uk']"
+2026-11-15 18:15:47,Qwen3-4B-Instruct-2507-Q8_0,E1,error,keywords,8192,f16,152,51,13.33,0.23,6319.3,223.75,False,,pass,pass,False,,keywords found: ['int('],keywords found: ['int(']
+2026-11-15 18:19:30,Qwen3-4B-Instruct-2507-Q8_0,E2,error,keywords,8192,f16,106,101,8.1,0.23,4708.5,435.36,False,,pass,pass,False,,keywords found: ['--allow-unrelated-histories'],keywords found: ['--allow-unrelated-histories']
+2026-11-15 18:26:46,Qwen3-4B-Instruct-2507-Q8_0,B1,bugfix-python,python_tests,8192,f16,167,73,14.44,0.23,6882.0,315.54,False,,pass,pass,False,"def median(nums):
+    if not nums:
+        raise ValueError(""Empty list"")
+    s = sorted(nums)
+    n = len(s)
+    mid = n // 2
+    if n % 2 == 0:
+        return (s[mid - 1] + s[mid]) / 2
+    return s[mid]",all tests passed,all tests passed
+2026-11-15 18:32:01,Qwen3-4B-Instruct-2507-Q8_0,B2,bugfix-js,node_tests,8192,f16,162,54,14.95,0.22,6248.3,244.66,False,,pass,pass,False,"function chunk(arr, size) {
+  const out = [];
+  for (let i = 0; i < arr.length; i += size) {
+    out.push(arr.slice(i, i + size));
+  }
+  return out;
+}",all tests passed,all tests passed
+2026-11-15 18:36:06,Qwen3-4B-Instruct-2507-Q8_0,B3,bugfix-sql,sql,8192,f16,181,41,15.73,0.23,7206.6,180.46,False,,pass,pass,False,"SELECT customer, SUM(amount) AS total
+FROM orders
+WHERE status = 'paid'
+GROUP BY customer
+HAVING total > 100
+ORDER BY total DESC;","rows=[['dave', 140.0], ['alice', 125.0], ['bob', 120.0]]","rows=[['dave', 140.0], ['alice', 125.0], ['bob', 120.0]]"
+2026-11-15 18:39:07,Qwen3-4B-Instruct-2507-Q8_0,W1,write-python,python_tests,8192,f16,173,768,14.43,0.22,7174.7,3437.88,False,,fail,fail,False,"def parse_duration(text: str) -> int:
+    if not text or not isinstance(text, str):
+        raise ValueError(""Empty or invalid string"")
+    
+    text = text.strip()
+    if not text:
+        raise ValueError(""Empty or invalid string"")
+    
+    hours = minutes = seconds = 0
+    units = {'h': 3600, 'm': 60, 's': 1}
+    
+    i = 0
+    while i < len(text):
+        if text[i].isdigit():
+            # Parse number part
+            num_start = i
+            while i < len(text) and text[i].isdigit():
+                i += 1
+            num = int(text[num_start:i])
+            
+            # Check next character for unit
+            if i < len(text):
+                unit = text[i].lower()
+                if unit in units:
+                    if unit == 'h':
+                        hours = num
+                    elif unit == 'm':
+                        minutes = num
+                    elif unit == 's':
+                        seconds = num
+                    i += 1
+                else:
+                    raise ValueError(""Invalid unit"")
+            else:
+                # No unit after number — invalid
+                raise ValueError(""Invalid string"")
+        else:
+            # First char is not digit — invalid
+            raise ValueError(""Invalid string"")
+    
+    # Validate units: h, m, s appear at most once, in that order
+    # We only allow one of each, and they must appear in order
+    # So we check if we have more than one unit or out of order
+    # Since we parse sequentially, we just ensure we don't have duplicates
+    # But we need to ensure that if we have h, then m, then s — valid
+    # If we have m then h — invalid
+    
+    # Actually, the problem says units appear at most once, in that order
+    # So we can only have h, then m, then s — no overlap or out of order
+    
+    # We already parse in order, so we just need to ensure we don't have
+    # multiple units in wrong order — but our parsing ensures we only see one
+    # per unit, and in order.
+    
+    # However, if we have '1h2m3s' — valid
+    # But if we have '1m2h' — invalid — we would have parsed m first, then h
+    # But in our loop, we parse digits, then check unit — so if we see '1m2h',
+    # we parse 1, then m, then 2, then h — which is valid? But the problem says
+    # units appear in order h, m, s — so m before h is invalid.
+    
+    # So we need to ensure that units are in order: h, then m, then s — no earlier
+    # unit after a later one.
+    
+    # We can track the order of units seen.
+    seen_units = []
+    for i, c in enumerate(text):
+        if c in 'hms':
+            if c in seen_units:
+                raise ValueError(""Duplicate unit"")
+            seen_units.append(c)
+    
+    # Check order: must be h, then m, then s — no m before h, no s before m
+    # So we need to check that h comes before m, and m before s
+    if 'h' in seen_units and 'm' in seen_units and 's' in seen_units:
+        if seen_units.index('h') > seen_units.index('m'):
+            raise ValueError(""Invalid order: h after m"")
+        if seen_units.index('m') > seen_units.index('s'):
+            raise",AssertionError,AssertionError
+2026-11-15 19:36:25,Qwen3-4B-Instruct-2507-Q8_0,W2,write-js,node_tests,8192,f16,141,124,10.61,0.22,6778.2,558.69,False,,fail,fail,False,"function slugify(text) {
+    return text
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, '-')
+        .replace(/^-+|-+$/g, '');
+}
+
+console.assert(slugify('Hello, World!') === 'hello-world', 'Test 1: Basic punctuation');
+console.assert(slugify('ABC 123 def') === 'abc-123-def', 'Test 2: Spaces and digits');
+console.assert(slugify('---Hello---') === 'hello', 'Test 3: Leading and trailing hyphens');",AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:,AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+2026-11-15 19:45:44,Qwen3-4B-Instruct-2507-Q8_0,L1,read-file,keywords,8192,f16,4276,14,14.36,0.21,293038.8,356.06,False,,fail,fail,False,,keywords found: ['retries=4'],keywords found: ['retries=4']
+2026-11-15 19:51:40,Qwen3-4B-Instruct-2507-Q8_0,L2,read-file,keywords,8192,f16,4259,147,2.91,0.22,10332.0,683.06,False,,pass,pass,False,,"keywords found: ['409', 'InsufficientStock']","keywords found: ['409', 'InsufficientStock']"
+2026-11-15 20:03:03,Qwen3-4B-Instruct-2507-Q8_0,L3,read-file-bugfix,python_tests,8192,f16,4278,140,3.52,0.25,13931.7,569.8,False,,pass,pass,False,"def bulk_discount_pct(quantity: int) -> Decimal:
+    """"""Returns the discount percentage for a line with `quantity` units.
+
+    The HIGHEST tier whose minimum quantity is reached applies:
+    10-49 units -> 5 %, 50-99 units -> 8 %, 100 or more -> 12 %, fewer than 10 -> 0 %.
+    """"""
+    if quantity < 0:
+        raise ValidationError(""quantity cannot be negative"")
+    for threshold, pct in sorted(BULK_TIERS, reverse=True):
+        if quantity >= threshold:
+            return pct
+    return Decimal(""0"")",all tests passed,all tests passed
+2026-11-15 20:12:33,Qwen3-4B-Instruct-2507-Q8_0,L4,read-file,keywords,8192,f16,4261,63,4.36,0.23,7344.4,278.64,False,,pass,pass,False,,"keywords found: ['INVENTORY_WAREHOUSE', 'LIS-01', '15']","keywords found: ['INVENTORY_WAREHOUSE', 'LIS-01', '15']"
+2026-11-15 20:23:32,Qwen3.5-4B-Q4_K_M,S1,shell,shell,8192,f16,159,14,6.88,0.17,23121.8,99.74,False,,fail,pass,True,"grep -c ""ERROR"" app.log",rc=0 stdout='7' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/grep: Permission denied'
+2026-11-15 20:25:12,Qwen3.5-4B-Q4_K_M,S2,shell,shell,8192,f16,159,18,6.47,0.17,14526.4,114.9,False,,fail,pass,True,"find . -name ""*.py"" -type f | sort",rc=0 stdout='./setup.py\n./src/main.py\n./src/util/helpers.py\n./tests/test_main.py' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/sort: Permission denied\n/data/data'
+2026-11-15 20:27:07,Qwen3.5-4B-Q4_K_M,S3,shell,shell,8192,f16,163,25,6.29,0.17,15594.0,158.32,False,,fail,pass,True,"for f in *.txt; do mv ""$f"" ""${f%.txt}.md""; done",rc=0 stdout='' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/mv: Permission denied\n/data/data/c'
+2026-11-15 20:29:45,Qwen3.5-4B-Q4_K_M,S4,shell,shell,8192,f16,169,29,6.23,0.18,16694.1,175.96,False,,fail,pass,True,"awk -F, 'NR>1 {print $3}' data.csv | sort -rn | head -3",rc=0 stdout='97\n91\n88' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/awk: Permission denied\n/data/data/'
+2026-11-15 20:32:41,Qwen3.5-4B-Q4_K_M,S5,shell,shell,8192,f16,157,27,6.2,0.16,14846.9,175.83,False,,fail,pass,True,sed -i 's/localhost/127.0.0.1/g' config.ini,rc=0 stdout='' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/sed: Permission denied'
+2026-11-15 20:35:37,Qwen3.5-4B-Q4_K_M,S6,git,shell,8192,f16,133,19,4.33,0.16,15753.9,131.88,False,,fail,fail,False,git log --oneline -1 --grep='fix parser',rc=0 stdout='49971a9 fix parser crash on empty input' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/git: Permission denied'
+2026-11-15 20:37:49,Qwen3.5-4B-Q4_K_M,S7,git,shell,8192,f16,132,12,4.38,0.16,15304.9,84.61,False,,fail,pass,True,git checkout -b feature/login,"rc=0 stdout='' stderr=""Switched to a new branch 'feature/login'""",rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/git: Permission denied'
+2026-11-15 20:39:14,Qwen3.5-4B-Q4_K_M,T1,termux,keywords,8192,f16,120,20,4.07,0.16,13546.9,130.76,False,,pass,pass,False,,"keywords found: ['ripgrep', 'termux-setup-storage']","keywords found: ['ripgrep', 'termux-setup-storage']"
+2026-11-15 20:41:25,Qwen3.5-4B-Q4_K_M,R1,regex,regex_fullmatch,8192,f16,141,44,5.15,0.17,14778.0,273.93,False,,pass,pass,False,^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$,misclassified: [],misclassified: []
+2026-11-15 20:45:59,Qwen3.5-4B-Q4_K_M,R2,regex,regex_findall,8192,f16,121,35,3.92,0.17,14306.8,209.76,False,,pass,pass,False,"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}","found=['ana.silva@example.com', 'support@fold-bench.dev', 'j_doe+test@mail.co.uk']","found=['ana.silva@example.com', 'support@fold-bench.dev', 'j_doe+test@mail.co.uk']"
+2026-11-15 20:49:28,Qwen3.5-4B-Q4_K_M,E1,error,keywords,8192,f16,161,52,5.16,0.17,18646.1,325.28,False,,pass,pass,False,,keywords found: ['int('],keywords found: ['int(']
+2026-11-15 20:54:54,Qwen3.5-4B-Q4_K_M,E2,error,keywords,8192,f16,110,114,3.29,0.16,13717.2,740.26,False,,pass,pass,False,,keywords found: ['--allow-unrelated-histories'],keywords found: ['--allow-unrelated-histories']
+2026-11-15 21:07:14,Qwen3.5-4B-Q4_K_M,B1,bugfix-python,python_tests,8192,f16,177,85,7.0,0.16,16043.9,539.32,False,,pass,pass,False,"def median(nums):
+    if not nums:
+        raise ValueError(""median() arg is an empty list"")
+    s = sorted(nums)
+    n = len(s)
+    mid = n // 2
+    if n % 2 == 0:
+        return (s[mid - 1] + s[mid]) / 2
+    return s[mid]",all tests passed,all tests passed
+2026-11-15 21:16:13,Qwen3.5-4B-Q4_K_M,B2,bugfix-js,node_tests,8192,f16,174,61,6.96,0.17,15702.1,371.89,False,,pass,pass,False,"function chunk(arr, size) {
+  const out = [];
+  for (let i = 0; i < arr.length; i += size) {
+    out.push(arr.slice(i, i + size));
+  }
+  return out;
+}",all tests passed,all tests passed
+2026-11-15 21:22:26,Qwen3.5-4B-Q4_K_M,B3,bugfix-sql,sql,8192,f16,188,45,7.31,0.16,16877.5,292.56,False,,pass,pass,False,"SELECT customer, SUM(amount) AS total
+FROM orders
+WHERE status = 'paid'
+GROUP BY customer
+HAVING SUM(amount) > 100
+ORDER BY total DESC;","rows=[['dave', 140.0], ['alice', 125.0], ['bob', 120.0]]","rows=[['dave', 140.0], ['alice', 125.0], ['bob', 120.0]]"
+2026-11-15 21:27:18,Qwen3.5-4B-Q4_K_M,W1,write-python,python_tests,8192,f16,177,251,5.22,0.16,21605.4,1580.16,False,,fail,fail,False,"def parse_duration(text: str) -> int:
+    if not text or not text.strip():
+        raise ValueError(""Empty or invalid string"")
+    
+    text = text.strip()
+    total_seconds = 0
+    
+    for unit in ['h', 'm', 's']:
+        if unit in text:
+            prefix, suffix = text.rsplit(unit, 1)
+            try:
+                total_seconds += int(prefix) * (60 if unit == 'h' else 60 if unit == 'm' else 1)
+            except ValueError:
+                raise ValueError(f""Invalid number prefix for unit '{unit}'"")
+            text = prefix
+    
+    if text != '':
+        raise ValueError(f""Invalid characters found: {text}"")
+    
+    return total_seconds
+
+# Tests
+assert parse_duration('1h30m15s') == 5415
+assert parse_duration('45s') == 45
+assert parse_duration('2h') == 7200
+assert parse_duration('') raises ValueError
+assert parse_duration('abc') raises ValueError
+assert parse_duration('10x') raises ValueError",SyntaxError: invalid syntax,SyntaxError: invalid syntax
+2026-11-15 21:53:39,Qwen3.5-4B-Q4_K_M,W2,write-js,node_tests,8192,f16,145,125,4.86,0.16,16499.1,790.36,False,,pass,pass,False,"function slugify(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+console.assert(slugify('Hello, World!') === 'hello-world', 'Test 1 failed');
+console.assert(slugify('  Hello World  ') === 'hello-world', 'Test 2 failed');
+console.assert(slugify('123-abc!@#') === '123-abc', 'Test 3 failed');",all tests passed,all tests passed
+2026-11-15 22:06:49,Qwen3.5-4B-Q4_K_M,L1,read-file,keywords,8192,f16,4549,14,14.54,0.16,308470.3,391.74,False,,fail,fail,False,,keywords found: ['retries=4'],keywords found: ['retries=4']
+2026-11-15 22:13:21,Qwen3.5-4B-Q4_K_M,L2,read-file,keywords,8192,f16,4532,104,11.51,0.31,43353.8,376.5,False,,pass,pass,False,,"keywords found: ['409', 'InsufficientStock']","keywords found: ['409', 'InsufficientStock']"
+2026-11-15 22:19:38,Qwen3.5-4B-Q4_K_M,L3,read-file-bugfix,python_tests,8192,f16,4551,142,31.67,8.39,16387.1,33.19,False,,fail,fail,False,"def bulk_discount_pct(quantity: int) -> Decimal:
+    """"""Returns the discount percentage for a line with `quantity` units.
+
+    The HIGHEST tier whose minimum quantity is reached applies:
+    10-49 units -> 5 %, 50-99 units -> 8 %, 100 or more -> 12 %, fewer than 10 -> 0 %.
+    """"""
+    if quantity < 0:
+        raise ValidationError(""quantity cannot be negative"")
+    for threshold, pct in BULK_TIERS:
+        if quantity >= threshold:
+            return pct
+    return Decimal(""0"")",AssertionError,AssertionError
+2026-11-15 22:20:11,Qwen3.5-4B-Q4_K_M,L4,read-file,keywords,8192,f16,4534,104,31.58,8.21,15831.9,28.38,False,,pass,pass,False,,"keywords found: ['INVENTORY_WAREHOUSE', 'LIS-01', '15']","keywords found: ['INVENTORY_WAREHOUSE', 'LIS-01', '15']"
+2026-11-15 22:28:47,Qwen3-8B-Q4_K_M,S1,shell,shell,8192,f16,159,14,32.38,4.14,4947.0,8.05,False,,fail,pass,True,grep -c 'ERROR' app.log,rc=0 stdout='7' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/grep: Permission denied'
+2026-11-15 22:28:55,Qwen3-8B-Q4_K_M,S2,shell,shell,8192,f16,159,18,32.04,8.43,1414.1,3.43,False,,fail,pass,True,"find . -type f -name ""*.py"" | sort",rc=0 stdout='./setup.py\n./src/main.py\n./src/util/helpers.py\n./tests/test_main.py' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/find: Permission denied\n/data/data'
+2026-11-15 22:28:58,Qwen3-8B-Q4_K_M,S3,shell,shell,8192,f16,163,40,31.26,7.87,1762.4,6.72,False,,fail,pass,True,"find . -maxdepth 1 -type f -name ""*.txt"" -exec bash -c 'mv ""$0"" ""${0%.txt}.md""' {} \;",rc=0 stdout='' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/find: Permission denied'
+2026-11-15 22:29:05,Qwen3-8B-Q4_K_M,S4,shell,shell,8192,f16,169,31,29.67,8.52,2060.9,5.58,False,,fail,fail,False,"tail -n +2 data.csv | sort -nr | head -n 3 | cut -d',' -f3",rc=0 stdout='9\n85\n91' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/sort: Permission denied\n/data/data'
+2026-11-15 22:29:10,Qwen3-8B-Q4_K_M,S5,shell,shell,8192,f16,157,27,29.7,8.16,1654.3,4.84,False,,fail,pass,True,sed -i 's/localhost/127.0.0.1/g' config.ini,rc=0 stdout='' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/sed: Permission denied'
+2026-11-15 22:29:15,Qwen3-8B-Q4_K_M,S6,git,shell,8192,f16,133,25,25.65,7.88,2435.6,5.48,False,,fail,pass,True,git log --grep='fix parser' --pretty=format:%H | head -n 1,rc=0 stdout='49971a9c50cec94d9fff6012756729c0143f0c74' stderr='',rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/git: Permission denied\n/data/data/'
+2026-11-15 22:29:21,Qwen3-8B-Q4_K_M,S7,git,shell,8192,f16,132,12,24.4,7.76,1768.8,3.19,False,,fail,pass,True,git checkout -b feature/login,"rc=0 stdout='' stderr=""Switched to a new branch 'feature/login'""",rc=126 stdout='' stderr='/data/data/com.termux/files/usr/bin/bash: line 1: /data/data/com.termux/files/usr/bin/git: Permission denied'
+2026-11-15 22:29:24,Qwen3-8B-Q4_K_M,T1,termux,keywords,8192,f16,120,15,25.95,8.01,2019.6,3.77,False,,pass,pass,False,,"keywords found: ['ripgrep', 'termux-setup-storage']","keywords found: ['ripgrep', 'termux-setup-storage']"
+2026-11-15 22:29:28,Qwen3-8B-Q4_K_M,R1,regex,regex_fullmatch,8192,f16,141,23,25.36,7.72,2882.4,5.73,False,,fail,fail,False,^\d{4}-\d{2}-\d{2}$,"misclassified: ['2026-13-01', '2026-00-10', '2026-11-32', '2026-11-00']","misclassified: ['2026-13-01', '2026-00-10', '2026-11-32', '2026-11-00']"
+2026-11-15 22:29:34,Qwen3-8B-Q4_K_M,R2,regex,regex_findall,8192,f16,121,35,27.06,7.7,1786.7,6.2,False,,fail,fail,False,[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+,"found=['ana.silva@example.com', 'support@fold-bench.dev', 'j_doe+test@mail.co.uk.']","found=['ana.silva@example.com', 'support@fold-bench.dev', 'j_doe+test@mail.co.uk.']"
+2026-11-15 22:29:40,Qwen3-8B-Q4_K_M,E1,error,keywords,8192,f16,156,44,25.61,7.98,3453.1,8.84,False,,pass,pass,False,,keywords found: ['int('],keywords found: ['int(']
+2026-11-15 22:29:49,Qwen3-8B-Q4_K_M,E2,error,keywords,8192,f16,110,48,24.49,0.25,1741.7,193.54,False,,pass,pass,False,,keywords found: ['--allow-unrelated-histories'],keywords found: ['--allow-unrelated-histories']
+2026-11-15 22:33:03,Qwen3-8B-Q4_K_M,B1,bugfix-python,python_tests,8192,f16,171,75,13.06,0.24,7902.3,318.19,False,,fail,fail,False,"def median(nums):
+    if not nums:
+        raise ValueError(""The list is empty."")
+    s = sorted(nums)
+    n = len(s)
+    mid = n // 2
+    if n % 2 == 0:
+        return (s[mid] + s[mid + 1]) / 2
+    return s[mid]",AssertionError,AssertionError
+2026-11-15 22:38:21,Qwen3-8B-Q4_K_M,B2,bugfix-js,node_tests,8192,f16,166,87,12.44,0.24,7821.0,368.49,False,,pass,pass,False,"function chunk(arr, size) {
+  const out = [];
+  for (let i = 0; i < arr.length; i += size) {
+    out.push(arr.slice(i, i + size));
+  }
+  return out;
+}",all tests passed,all tests passed
+2026-11-15 22:44:30,Qwen3-8B-Q4_K_M,B3,bugfix-sql,sql,8192,f16,185,89,13.08,0.24,8968.6,376.64,False,,pass,pass,False,"SELECT customer, SUM(amount) AS total
+FROM orders
+WHERE status = 'paid'
+GROUP BY customer
+HAVING SUM(amount) > 100
+ORDER BY total DESC;","rows=[['dave', 140.0], ['alice', 125.0], ['bob', 120.0]]","rows=[['dave', 140.0], ['alice', 125.0], ['bob', 120.0]]"
+2026-11-15 22:50:46,Qwen3-8B-Q4_K_M,W1,write-python,python_tests,8192,f16,177,159,13.65,0.24,7824.5,678.17,False,,fail,fail,False,"import re
+
+def parse_duration(text: str) -> int:
+    if not text:
+        raise ValueError(""Empty string"")
+    pattern = r'(\d+)h?(\d+)m?(\d+)s?'
+    match = re.fullmatch(pattern, text)
+    if not match:
+        raise ValueError(""Invalid format"")
+    h, m, s = match.groups()
+    return int(h)*3600 + int(m)*60 + int(s)
+
+assert parse_duration('1h30m15s') == 3600 + 1800 + 15
+assert parse_duration('45s') == 45
+assert parse_duration('2h') == 7200",ValueError: Invalid format,ValueError: Invalid format
+2026-11-15 23:02:05,Qwen3-8B-Q4_K_M,W2,write-js,node_tests,8192,f16,145,103,10.98,0.23,6862.5,452.52,False,,fail,fail,False,"function slugify(text) {
+    return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').trim('-');
+}
+
+console.assert(slugify('Hello, World!') === 'hello-world', 'Test 1');
+console.assert(slugify('  Test   123  ') === 'test-123', 'Test 2');
+console.assert(slugify('---Invalid--Chars--') === 'invalid-chars', 'Test 3');",AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:,AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+2026-11-15 23:09:38,Qwen3-8B-Q4_K_M,L1,read-file,keywords,8192,f16,4280,14,11.69,0.23,360325.1,415.71,False,,fail,fail,False,,keywords found: ['retries=4'],keywords found: ['retries=4']
+2026-11-15 23:16:33,Qwen3-8B-Q4_K_M,L2,read-file,keywords,8192,f16,4263,40,3.48,0.24,9804.5,172.83,False,,pass,pass,False,,"keywords found: ['409', 'InsufficientStock']","keywords found: ['409', 'InsufficientStock']"
+2026-11-15 23:19:26,Qwen3-8B-Q4_K_M,L3,read-file-bugfix,python_tests,8192,f16,4282,137,4.28,0.24,12406.1,589.12,False,,pass,pass,False,"def bulk_discount_pct(quantity: int) -> Decimal:
+    """"""Returns the discount percentage for a line with `quantity` units.
+
+    The HIGHEST tier whose minimum quantity is reached applies:
+    10-49 units -> 5 %, 50-99 units -> 8 %, 100 or more -> 12 %, fewer than 10 -> 0 %.
+    """"""
+    if quantity < 0:
+        raise ValidationError(""quantity cannot be negative"")
+    for threshold, pct in reversed(BULK_TIERS):
+        if quantity >= threshold:
+            return pct
+    return Decimal(""0"")",all tests passed,all tests passed
+2026-11-15 23:29:16,Qwen3-8B-Q4_K_M,L4,read-file,keywords,8192,f16,4265,42,3.65,0.23,9898.0,186.27,False,,pass,pass,False,,"keywords found: ['INVENTORY_WAREHOUSE', 'LIS-01', '15']","keywords found: ['INVENTORY_WAREHOUSE', 'LIS-01', '15']"
